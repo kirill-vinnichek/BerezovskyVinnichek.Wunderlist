@@ -249,10 +249,6 @@
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
       <Name>Wunderlist.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.Service\Wunderlist.Service.csproj">
-      <Project>{7eb5b3f1-6c3e-40d4-9595-9c8cdfd6aa6f}</Project>
-      <Name>Wunderlist.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
