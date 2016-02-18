@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Data", "Wunderli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Model", "Wunderlist.Models\Wunderlist.Model.csproj", "{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wunderlist.Service", "Wunderlist.Service\Wunderlist.Service.csproj", "{816623AE-1BC8-4577-96B0-D698FDE81975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816623AE-1BC8-4577-96B0-D698FDE81975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816623AE-1BC8-4577-96B0-D698FDE81975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816623AE-1BC8-4577-96B0-D698FDE81975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816623AE-1BC8-4577-96B0-D698FDE81975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
