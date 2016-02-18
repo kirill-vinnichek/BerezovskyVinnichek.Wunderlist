@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Data.Repositories
 {
-    public class TaskRepository:RepositoryBase<Task>,ITaskRepository
+    public class ToDoItemRepository:RepositoryBase<Task>,IToDoItemRepository
     {
-        public TaskRepository(IDatabaseFactory dbF) : base(dbF) { }
+        public ToDoItemRepository(IDatabaseFactory dbF) : base(dbF) { }
 
     }
 
-    public interface ITaskRepository : IRepository<Task> { }
+    public interface IToDoItemRepository : IRepository<Task> { }
 
 
 }

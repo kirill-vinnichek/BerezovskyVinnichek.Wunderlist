@@ -8,10 +8,11 @@ using Wunderlist.Models;
 
 namespace Wunderlist.Data.Repositories
 {
-    public class ProfileRepository:RepositoryBase<UserProfile>,IProfileRepository
+    public class RoleRepository:RepositoryBase<Role>,IRoleRepository
     {
-        public ProfileRepository(IDatabaseFactory dbF) : base(dbF) { }
+        public RoleRepository(IDatabaseFactory dbF) : base(dbF) { }
     }
 
-    public interface IProfileRepository : IRepository<UserProfile> { }
+    interface IRoleRepository : IRepository<Role> { }
+
 }
