@@ -8,14 +8,21 @@ namespace Wunderlist.Models
 {
     public class Task
     {
+        public enum Status
+        {
+            New,
+            Unfinished,
+            Сompleted
+        }
         public int TaskId { get; set; }
 
         public string TaskText { get; set; }
 
         public DateTime? TaskDate { get; set; }
 
-        public bool TaskIsMarked { get; set; }
 
-        public bool TaskIsComplete { get; set; }
+        public Status TaskCurrentState { get; set; }
+
+        public int TaskCategoryId { get; set; }
     }
 }

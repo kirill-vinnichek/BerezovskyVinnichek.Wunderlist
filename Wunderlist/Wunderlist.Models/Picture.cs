@@ -13,7 +13,5 @@ namespace Wunderlist.Models
         public byte[] PictureData { get; set; }
 
         public string PictureMimeType { get; set; }
-
-        //public virtual AppUser PictureUser { get; set; }
     }
 }

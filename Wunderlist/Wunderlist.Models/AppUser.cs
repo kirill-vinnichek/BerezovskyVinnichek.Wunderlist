@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
-    public class AppUser : IdentityUser
-    {
-        public AppUser()
-        {
-            UserBackground = new HashSet<Picture>();
-        }
+    public class AppUser : IUser<int>
+    {       
+        public int Id { get; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
 
-        public virtual  ICollection<Category> UserCategoryList{get ;set ;}
-
-        public virtual ICollection<Picture> UserBackground { get; set; }//подумать!
+        public string UserPassword { get; set; }
+        public int UserProfileId { get; set; }
     }
 }
