@@ -10,7 +10,7 @@ using Wunderlist.Models;
 
 namespace SignalR.Data
 {
-    public class WunderlistContext : IdentityDbContext<AppUser>
+    public class WunderlistContext : IdentityDbContext<AppUser,>
     {
 
         public WunderlistContext() : base("WunderlistConnection")
