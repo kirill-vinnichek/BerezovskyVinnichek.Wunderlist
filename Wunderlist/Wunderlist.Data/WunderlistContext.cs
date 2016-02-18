@@ -11,8 +11,7 @@ using Wunderlist.Models;
 namespace SignalR.Data
 {
     public class WunderlistContext : DbContext
-    {
-
+    {       
         public WunderlistContext() : base("WunderlistConnection")
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WunderlistContext>());
@@ -25,6 +24,8 @@ namespace SignalR.Data
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+      
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

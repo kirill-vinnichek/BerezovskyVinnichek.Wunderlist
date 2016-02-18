@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wunderlist.Models
 {
-    public class User
+    public class User 
     {       
         public string Id { get; }
         public string UserName { get; set; }
