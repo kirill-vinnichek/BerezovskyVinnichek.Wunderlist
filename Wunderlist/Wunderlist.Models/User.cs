@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
-    public class User : IUser
+    public class User 
     {       
         public string Id { get; }
         public string UserName { get; set; }

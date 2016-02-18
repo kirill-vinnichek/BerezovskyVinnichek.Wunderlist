@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
-    public class Task
+    public class ToDoItem
     {
         public enum Status
         {
@@ -14,15 +14,15 @@ namespace Wunderlist.Models
             Unfinished,
             Сompleted
         }
-        public int TaskId { get; set; }
+        public int Id { get; set; }
 
-        public string TaskText { get; set; }
+        public string Text { get; set; }
 
-        public DateTime? TaskDate { get; set; }
+        public DateTime? Date { get; set; }
 
 
-        public Status TaskCurrentState { get; set; }
+        public Status CurrentState { get; set; }
 
-        public int TaskCategoryId { get; set; }
+        public int CategoryId { get; set; }
     }
 }
