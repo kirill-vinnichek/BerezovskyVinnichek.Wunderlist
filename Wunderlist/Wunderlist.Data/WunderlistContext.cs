@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Wunderlist.Data.Configuration;
 using Wunderlist.Models;
 
 namespace Wunderlist.Data
@@ -32,6 +27,9 @@ namespace Wunderlist.Data
         
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
+
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new RoleConfiguration());
         }
 
 

@@ -1,64 +1,138 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Wunderlist.Models;
 using System.Threading.Tasks;
 using Wunderlist.Web.Models;
+using Wunderlist.Service.Services;
+using Wunderlist.Service;
+using AutoMapper;
+using Wunderlist.Models;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class CustomUserStore : IUserStore<OwinUser>, IUserPasswordStore<OwinUser>
+    public class CustomUserStore : IUserStore<OwinUser>, IUserPasswordStore<OwinUser>, IUserEmailStore<OwinUser>
     {
+        private readonly IUserService userService;
+       
 
+        public CustomUserStore(IUserService userService)
+        {
+            this.userService = userService;           
+        }
 
+        //TODO: Implement When Stas ends Services
+        #region Not Implemented        
 
-        #region Not Implemented
+        public Task<bool> GetEmailConfirmedAsync(OwinUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetEmailConfirmedAsync(OwinUser user, bool confirmed)
+        {
+            throw new NotImplementedException();
+        }
 
 
         #endregion
+
         public System.Threading.Tasks.Task CreateAsync(OwinUser user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("user");
+           
+            var u = Mapper.Map<User>(user);
+            return Task.Run(() => userService.Add(u));
+
         }
 
-        public System.Threading.Tasks.Task DeleteAsync(OwinUser user)
+        //We use authorization by email,that why we use email
+        public Task<OwinUser> FindByNameAsync(string userName)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(userName))
+                throw new ArgumentException("userName is null or empty");
+            return Task.Run(() => Mapper.Map<OwinUser>(userService.GetByEmail(userName)));
         }
 
         public Task<OwinUser> FindByIdAsync(string userId)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(userId))
+                throw new ArgumentException("userId is null or empty");
+            return Task.Run(() => Mapper.Map<OwinUser>(userService.GetById(userId)));
+        }
+     
+
+        public System.Threading.Tasks.Task UpdateAsync(OwinUser user)
+        {
+            if (user == null)
+                throw new ArgumentNullException("user");
+            var u = Mapper.Map<User>(user);
+            return Task.Run(() => userService.Update(u));
         }
 
-        public Task<OwinUser> FindByNameAsync(string userName)
+        public System.Threading.Tasks.Task DeleteAsync(OwinUser user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("user");
+            var u = Mapper.Map<User>(user);
+            return Task.Run(() => userService.Delete(u));
         }
 
         public Task<string> GetPasswordHashAsync(OwinUser user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("user");
+            var password = userService.GetById(user.Id).UserPasswordHash;
+            return Task.FromResult(password);
         }
 
         public Task<bool> HasPasswordAsync(OwinUser user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("user");
+            var password = userService.GetById(user.Id).UserPasswordHash;
+            return Task.FromResult(!string.IsNullOrEmpty(password));
         }
 
         public System.Threading.Tasks.Task SetPasswordHashAsync(OwinUser user, string passwordHash)
         {
-            throw new NotImplementedException();
+            user.UserPasswordHash = passwordHash;
+            return Task.FromResult<object>(null);
         }
 
-        public System.Threading.Tasks.Task UpdateAsync(OwinUser user)
+        public Task<string> GetEmailAsync(OwinUser user)
+        {
+            if (user == null)
+                throw new ArgumentNullException("user");
+            return Task.FromResult(user.Email);
+        }
+
+        public Task SetEmailAsync(OwinUser user, string email)
+        {
+            user.Email = email;            
+            return UpdateAsync(user);
+        }
+
+        public void Dispose()
+        {
+
+        }
+
+        
+
+
+
+
+
+
+
+
+
+       
+
+       
+
+      
+        public Task<OwinUser> FindByEmailAsync(string email)
         {
             throw new NotImplementedException();
         }
