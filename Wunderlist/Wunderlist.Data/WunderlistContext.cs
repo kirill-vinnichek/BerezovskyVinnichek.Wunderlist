@@ -10,15 +10,19 @@ using Wunderlist.Models;
 
 namespace SignalR.Data
 {
-    public class WunderlistContext : IdentityDbContext<User>
+    public class WunderlistContext : DbContext
     {
+
+        public DbSet<User> Users { get; set; }
 
         public WunderlistContext() : base("WunderlistConnection")
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WunderlistContext>());
         }
 
-      
+     
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         

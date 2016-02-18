@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Wunderlist.Models
 {
-    public class Role : IRole
+    public class Role 
     {
         public string Id { get; }
 
