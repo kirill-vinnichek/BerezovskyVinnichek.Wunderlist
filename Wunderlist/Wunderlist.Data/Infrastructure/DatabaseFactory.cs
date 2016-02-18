@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SignalR.Data.Infrastructure
+namespace Wunderlist.Data.Infrastructure
 {
     public class DatabaseFactory : Disposable,IDatabaseFactory
     {

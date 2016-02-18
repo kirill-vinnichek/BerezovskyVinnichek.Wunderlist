@@ -46,6 +46,16 @@
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wunderlist.Data\Wunderlist.Data.csproj">
+      <Project>{7a056ecd-4e65-4add-81a4-a1278e32a01b}</Project>
+      <Name>Wunderlist.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Models\Wunderlist.Model.csproj">
+      <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
+      <Name>Wunderlist.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

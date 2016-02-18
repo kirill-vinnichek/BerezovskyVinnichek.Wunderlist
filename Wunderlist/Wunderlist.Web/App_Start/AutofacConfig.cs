@@ -1,14 +1,11 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using SignalR.Data.Infrastructure;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
+using Wunderlist.Data.Infrastructure;
 using Wunderlist.Data.Repositories;
-using Wunderlist.Service;
+using Wunderlist.Service.Services;
 
 namespace Wunderlist.Web
 {

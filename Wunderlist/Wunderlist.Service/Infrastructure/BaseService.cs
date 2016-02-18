@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SignalR.Data.Infrastructure;
+﻿using System.Collections.Generic;
+using Wunderlist.Data.Infrastructure;
 
 namespace Wunderlist.Service.Infrastructure
 {

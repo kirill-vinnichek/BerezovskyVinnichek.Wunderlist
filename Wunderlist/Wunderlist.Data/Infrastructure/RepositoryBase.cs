@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SignalR.Data.Infrastructure
+namespace Wunderlist.Data.Infrastructure
 {
     public class RepositoryBase<T> : IRepository<T> where T :class
     {

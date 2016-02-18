@@ -10,6 +10,7 @@ using Wunderlist.Models;
 using Wunderlist.Service;
 using Wunderlist.Web.ViewModels;
 using Wunderlist.Web.Models;
+using Wunderlist.Service.Services;
 
 namespace Wunderlist.Web.Controllers
 {

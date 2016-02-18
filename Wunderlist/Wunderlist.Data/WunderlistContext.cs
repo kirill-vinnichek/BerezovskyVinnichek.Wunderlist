@@ -8,7 +8,7 @@ using System.Data.Entity.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wunderlist.Models;
 
-namespace SignalR.Data
+namespace Wunderlist.Data
 {
     public class WunderlistContext : DbContext
     {       

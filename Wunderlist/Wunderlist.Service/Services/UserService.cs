@@ -8,7 +8,7 @@ using Wunderlist.Service.Infrastructure;
 
 namespace Wunderlist.Service.Services
 {
-    class UserService
+    public class UserService
     {
     }
 
