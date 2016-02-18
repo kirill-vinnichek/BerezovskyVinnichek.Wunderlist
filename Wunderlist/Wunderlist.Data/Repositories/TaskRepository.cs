@@ -10,6 +10,7 @@ namespace Wunderlist.Data.Repositories
     public class TaskRepository:RepositoryBase<Task>,ITaskRepository
     {
         public TaskRepository(IDatabaseFactory dbF) : base(dbF) { }
+
     }
 
     public interface ITaskRepository : IRepository<Task> { }
