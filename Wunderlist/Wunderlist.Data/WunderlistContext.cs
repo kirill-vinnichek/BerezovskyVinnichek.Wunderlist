@@ -10,7 +10,7 @@ using Wunderlist.Models;
 
 namespace SignalR.Data
 {
-    public class WunderlistContext : IdentityDbContext<User>
+    public class WunderlistContext : DbContext
     {
 
         public WunderlistContext() : base("WunderlistConnection")
@@ -18,7 +18,14 @@ namespace SignalR.Data
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WunderlistContext>());
         }
 
-      
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<ToDoItem> ToDoItems { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         

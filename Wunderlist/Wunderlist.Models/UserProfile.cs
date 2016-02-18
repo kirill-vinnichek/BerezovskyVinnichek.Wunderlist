@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
-    public class Profile
+    public class UserProfile
     {
         public virtual ICollection<Category> ProfileCategoryList { get; set; }
         public int ProfileBackground { get; set; } 
