@@ -74,6 +74,7 @@ namespace Wunderlist.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new OwinUser() { UserName = viewModel.UserName,Email = viewModel.Email };
+                userManager.UserValidator = new UserValidator<OwinUser>(userManager) { RequireUniqueEmail = true };
                 var result = await userManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {

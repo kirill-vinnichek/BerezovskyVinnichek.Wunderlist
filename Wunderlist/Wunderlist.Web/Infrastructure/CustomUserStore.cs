@@ -59,7 +59,12 @@ namespace Wunderlist.Web.Infrastructure
                 throw new ArgumentException("userId is null or empty");
             return Task.Run(() => Mapper.Map<OwinUser>(userService.GetById(userId)));
         }
-     
+        public Task<OwinUser> FindByEmailAsync(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("email is null or empty");
+            return Task.Run(() => Mapper.Map<OwinUser>(userService.GetByEmail(email)));
+        }
 
         public System.Threading.Tasks.Task UpdateAsync(OwinUser user)
         {
@@ -132,9 +137,6 @@ namespace Wunderlist.Web.Infrastructure
        
 
       
-        public Task<OwinUser> FindByEmailAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
