@@ -8,6 +8,6 @@ namespace Wunderlist.Data.Repositories
         public RoleRepository(IDatabaseFactory dbF) : base(dbF) { }
     }
 
-    interface IRoleRepository : IRepository<Role> { }
+    public interface IRoleRepository : IRepository<Role> { }
 
 }

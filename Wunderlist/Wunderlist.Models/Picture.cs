@@ -8,7 +8,7 @@ namespace Wunderlist.Models
 {
     public class Picture
     {
-        public int PictureId { get; set; }
+        public int ID { get; set; }
 
         public byte[] PictureData { get; set; }
 

@@ -14,6 +14,7 @@ using Wunderlist.Service.Services;
 
 namespace Wunderlist.Web.Controllers
 {
+    //TODO: Избавится от EF в Web проекте. Спросить как?
     [Authorize]
     public class AccountController : Controller
     {
@@ -42,7 +43,7 @@ namespace Wunderlist.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = userManager.Find(viewModel.Email, viewModel.Password);
+                var user = await userManager.FindAsync(viewModel.Email, viewModel.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, true);
@@ -55,6 +56,45 @@ namespace Wunderlist.Web.Controllers
                 }
             }
             return View(viewModel);
+        }
+
+        [AllowAnonymous]
+        // GET: Login
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        // GET: Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new OwinUser() { UserName = viewModel.UserName,Email = viewModel.Email };
+                var result = await userManager.CreateAsync(user, viewModel.Password);
+                if (result.Succeeded)
+                {
+                    await SignInAsync(user, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+            // If we got this far, something failed, redisplay form
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
 

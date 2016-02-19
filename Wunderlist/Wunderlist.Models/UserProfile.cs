@@ -8,6 +8,7 @@ namespace Wunderlist.Models
 {
     public class UserProfile
     {
+        public int ID { get; set; }
         public virtual ICollection<Category> ProfileCategoryList { get; set; }
         public int ProfileBackground { get; set; } 
     }

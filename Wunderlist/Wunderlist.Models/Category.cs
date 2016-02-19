@@ -9,7 +9,7 @@ namespace Wunderlist.Models
     public class Category
     {
 
-        public int CategoryId { get; set; }
+        public int ID { get; set; }
         public string CategoryName { get; set;}
         public virtual ICollection<ToDoItem> TaskList { get; set; }
         public virtual ICollection<User> CategoryUser{ get; set; }

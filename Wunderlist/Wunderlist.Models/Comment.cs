@@ -8,7 +8,7 @@ namespace Wunderlist.Models
 {
     public class Comment
     {
-        public int CommentId { get; set; }
+        public int ID { get; set; }
         public User CommentUser { get; set; }
         public string CommentText { get; set; }
     }
