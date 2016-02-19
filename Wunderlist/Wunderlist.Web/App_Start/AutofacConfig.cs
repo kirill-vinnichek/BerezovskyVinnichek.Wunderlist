@@ -1,12 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Microsoft.AspNet.Identity;
-using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
-using Wunderlist.Service.Services;
+using Wunderlist.Service.Core;
 using Wunderlist.Web.Infrastructure;
 using Wunderlist.Web.Models;
 
@@ -18,14 +15,8 @@ namespace Wunderlist.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
-                .Where(t => t.Name.EndsWith("Repository"))
-                .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
-                .Where(t => t.Name.EndsWith("Service"))
-                .AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterFilterProvider();
+            builder.RegisterModule(new AutofacServiceModule());
 
             builder.RegisterType<CustomUserStore>().As<IUserStore<OwinUser>>().InstancePerRequest();
             builder.RegisterType<CustomRoleStore>().As<IRoleStore<OwinRole>>().InstancePerRequest();
