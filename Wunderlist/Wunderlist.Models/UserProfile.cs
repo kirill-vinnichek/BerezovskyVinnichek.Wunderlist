@@ -10,6 +10,7 @@ namespace Wunderlist.Models
     {
         public int ID { get; set; }
         public virtual ICollection<Category> ProfileCategoryList { get; set; }
-        public int ProfileBackground { get; set; } 
+        public int ProfileBackground { get; set; }
+        public string UserId { get; set; }
     }
 }

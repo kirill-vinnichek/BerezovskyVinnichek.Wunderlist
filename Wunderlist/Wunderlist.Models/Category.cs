@@ -11,7 +11,7 @@ namespace Wunderlist.Models
 
         public int ID { get; set; }
         public string CategoryName { get; set;}
-        public virtual ICollection<ToDoItem> TaskList { get; set; }
-        public virtual ICollection<User> CategoryUser{ get; set; }
+        public virtual ICollection<ToDoItem> ToDoItemsList { get; set; }
+        public virtual ICollection<UserProfile> CategoryUser{ get; set; }
     }
 }

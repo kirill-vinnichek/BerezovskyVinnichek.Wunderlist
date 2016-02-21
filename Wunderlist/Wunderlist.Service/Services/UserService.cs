@@ -1,30 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Wunderlist.Data.Infrastructure;
 using Wunderlist.Data.Repositories;
 using Wunderlist.Models;
-using Wunderlist.Service.Infrastructure;
+using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Service.Services
 {
-    public class UserService:BaseService<User>,IUserService
+    public class UserService:IUserService
     {
-        public UserService(IUnitOfWork uof, IUserRepository userRepository):base(uof,userRepository)
-        {
+        private readonly IUnitOfWork uoWork;
+        private readonly IUserRepository repository;
 
+        public UserService(IUnitOfWork uoW, IUserRepository rep)
+        {
+            this.repository = rep;
+            this.uoWork = uoW;
+        }
+        public void Add(User entity)
+        {
+            repository.Add(entity);
+            uoWork.Commit();
+        }
+
+        public void Delete(User entity)
+        {
+            var user = GetById(entity.Id);
+            repository.Delete(user);
+            uoWork.Commit();
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return repository.GetAll();
+        }
+
+        public void Delete(string id)
+        {
+            repository.Delete(u=>u.Id==id);
+            uoWork.Commit();
         }
 
         public User GetByEmail(string email)
         {
-            return Rep.Get(u => u.Email.Contains(email));
+            return repository.Get(u => u.Email.Contains(email));
         }
-    }
 
-    public interface IUserService : IService<User>
-    {
-        User GetByEmail(string email);
+        public User GetById(string id)
+        {
+            return repository.GetById(id);
+        }
+
+
+        public void Update(User entity)
+        {
+            repository.Update(entity);
+            uoWork.Commit();
+        }
     }
 }
