@@ -17,7 +17,7 @@ namespace Wunderlist.Data
         public DbSet<ToDoItem> ToDoItems { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<ToDoItemList> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
       
 

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
-    public class Category
+    public class ToDoItemList
     {
 
         public int ID { get; set; }
-        public string CategoryName { get; set;}
+        public string Name { get; set;}
         public virtual ICollection<ToDoItem> ToDoItemsList { get; set; }
-        public virtual ICollection<UserProfile> CategoryUser{ get; set; }
+        public virtual ICollection<UserProfile>ProfilesList{ get; set; }
     }
 }
