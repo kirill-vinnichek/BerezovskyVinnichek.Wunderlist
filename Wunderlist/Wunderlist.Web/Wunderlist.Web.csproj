@@ -183,8 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\CustomRoleStore.cs" />
-    <Compile Include="Infrastructure\CustomUserStore.cs" />
+    <Compile Include="Infrastructure\WunderlistRoleStore.cs" />
+    <Compile Include="Infrastructure\WunderlistUserManager.cs" />
+    <Compile Include="Infrastructure\WunderlistUserStore.cs" />
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Mapping\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Mapping\ViewModelToDomainMappingProfile.cs" />

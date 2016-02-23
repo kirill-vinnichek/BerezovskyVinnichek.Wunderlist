@@ -9,12 +9,12 @@ using Wunderlist.Models;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class CustomUserStore : IUserStore<OwinUser>, IUserPasswordStore<OwinUser>, IUserEmailStore<OwinUser>
+    public class WunderlistUserStore : IUserStore<OwinUser>, IUserPasswordStore<OwinUser>, IUserEmailStore<OwinUser>
     {
         private readonly IUserService userService;
        
 
-        public CustomUserStore(IUserService userService)
+        public WunderlistUserStore(IUserService userService)
         {
             this.userService = userService;           
         }

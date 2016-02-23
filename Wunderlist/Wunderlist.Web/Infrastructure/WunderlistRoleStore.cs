@@ -11,12 +11,12 @@ using Wunderlist.Models;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class CustomRoleStore : IRoleStore<OwinRole>
+    public class WunderlistRoleStore : IRoleStore<OwinRole>
     {
 
         private readonly IRoleService roleService;
 
-        public CustomRoleStore(IRoleService roleService)
+        public WunderlistRoleStore(IRoleService roleService)
         {
             this.roleService = roleService;
         }
