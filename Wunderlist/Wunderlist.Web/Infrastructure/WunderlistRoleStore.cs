@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using Wunderlist.Web.Models;
 using System.Threading.Tasks;
-using Wunderlist.Service;
 using AutoMapper;
 using Wunderlist.Models;
+using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {

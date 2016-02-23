@@ -2,10 +2,9 @@
 using System;
 using System.Threading.Tasks;
 using Wunderlist.Web.Models;
-using Wunderlist.Service.Services;
-using Wunderlist.Service;
 using AutoMapper;
 using Wunderlist.Models;
+using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {

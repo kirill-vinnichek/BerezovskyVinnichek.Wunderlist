@@ -11,6 +11,7 @@ using Wunderlist.Service;
 using Wunderlist.Web.ViewModels;
 using Wunderlist.Web.Models;
 using Wunderlist.Service.Services;
+using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Controllers
 {

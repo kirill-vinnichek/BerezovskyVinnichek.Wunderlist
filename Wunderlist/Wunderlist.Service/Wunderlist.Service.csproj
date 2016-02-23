@@ -45,10 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AutofacServiceModule.cs" />
-    <Compile Include="Infrastructure\BaseService.cs" />
-    <Compile Include="Infrastructure\IService.cs" />
+    <Compile Include="Interfaces\ICategoryService.cs" />
+    <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Interfaces\IRoleService.cs" />
+    <Compile Include="Interfaces\IToDoItemService.cs" />
+    <Compile Include="Interfaces\IProfileService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\CommentService.cs" />
+    <Compile Include="Services\ProfileService.cs" />
     <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\ToDoItemService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

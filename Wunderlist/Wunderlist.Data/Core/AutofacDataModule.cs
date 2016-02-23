@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Wunderlist.Data.Infrastructure;
@@ -9,7 +10,7 @@ using Wunderlist.Data.Repositories;
 
 namespace Wunderlist.Data.Core
 {
-   public class AutofacDataModule:Module
+   public class AutofacDataModule: Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
