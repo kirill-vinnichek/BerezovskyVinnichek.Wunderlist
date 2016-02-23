@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Wunderlist.Data.Infrastructure;
@@ -11,52 +10,41 @@ using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Service.Services
 {
-    public class UserService:IUserService
+    public class ProfileService : IProfileService
     {
         private readonly IUnitOfWork uoWork;
-        private readonly IUserRepository repository;
+        private readonly IProfileRepository repository;
 
-        public UserService(IUnitOfWork uoW, IUserRepository rep)
+        public ProfileService(IUnitOfWork uoW, IProfileRepository rep)
         {
             this.repository = rep;
             this.uoWork = uoW;
         }
-        public void Add(User entity)
+        public void Add(UserProfile entity)
         {
             repository.Add(entity);
             uoWork.Commit();
         }
 
-        public void Delete(User entity)
+        public void Delete(int id)
         {
-            var user = GetById(entity.Id);
-            repository.Delete(user);
+            repository.Delete(p=>p.ID==id);
             uoWork.Commit();
         }
 
-        public IEnumerable<User> GetAll()
+        public void Delete(UserProfile entity)
         {
-            return repository.GetAll();
-        }
-
-        public void Delete(string id)
-        {
-            repository.Delete(u=>u.Id==id);
+            var profile = GetById(entity.ID);
+            repository.Delete(profile);
             uoWork.Commit();
         }
 
-        public User GetByEmail(string email)
-        {
-            return repository.Get(u => u.Email.Contains(email));
-        }
-
-        public User GetById(string id)
+        public UserProfile GetById(int id)
         {
             return repository.GetById(id);
         }
 
-
-        public void Update(User entity)
+        public void Update(UserProfile entity)
         {
             repository.Update(entity);
             uoWork.Commit();

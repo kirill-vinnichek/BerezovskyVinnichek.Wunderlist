@@ -23,6 +23,10 @@ namespace Wunderlist.Models
 
         public Status CurrentState { get; set; }
 
+        public int NumberInList { get; set; }
+
         public int CategoryId { get; set; }
+
+        public virtual ICollection<Comment> CommentsList{ get; set; }
     }
 }
