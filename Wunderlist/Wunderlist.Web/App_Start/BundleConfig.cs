@@ -25,6 +25,10 @@ namespace Wunderlist.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/css/register").Include(
+                     "~/Content/bootstrap.css",
+                     "~/Content/register/register.css"));
         }
     }
 }

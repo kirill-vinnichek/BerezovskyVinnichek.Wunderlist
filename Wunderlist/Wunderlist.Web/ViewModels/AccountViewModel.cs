@@ -37,13 +37,7 @@ namespace Wunderlist.Web.ViewModels
         [Display(Name = "Password*")]
         [StringLength(100, ErrorMessage = "The password must contain at least {2} characters", MinimumLength = 4)]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Required(ErrorMessage = "Confirm the password")]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Passwords must match")]
-        public string ConfirmPassword { get; set; }
-
+        public string Password { get; set; }      
     }
 
 
