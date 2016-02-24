@@ -11,7 +11,7 @@ using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class WunderlistRoleStore : IRoleStore<OwinRole>
+    public class WunderlistRoleStore : IRoleStore<OwinRole,int>
     {
 
         private readonly IRoleService roleService;
@@ -41,7 +41,7 @@ namespace Wunderlist.Web.Infrastructure
 
        
 
-        public Task<OwinRole> FindByIdAsync(string roleId)
+        public Task<OwinRole> FindByIdAsync(int roleId)
         {
             if (string.IsNullOrEmpty(roleId))
                 throw new ArgumentException("roleId is null or empty");

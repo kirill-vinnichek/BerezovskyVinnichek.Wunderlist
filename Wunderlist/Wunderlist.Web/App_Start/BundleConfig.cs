@@ -14,7 +14,11 @@ namespace Wunderlist.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery/jquery.validate*"));
 
-            
+            bundles.Add(new ScriptBundle("~/script/angular").Include(
+                "~/Scripts/angular_lib/angular.min.js",
+                "~/Scripts/angular_lib/angular-route.min.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 

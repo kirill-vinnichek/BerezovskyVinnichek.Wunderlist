@@ -21,12 +21,12 @@ namespace Wunderlist.Web.Controllers
     {
 
         private readonly IUserService userService;
-        private readonly UserManager<OwinUser> userManager;
+        private readonly UserManager<OwinUser,int> userManager;
 
-        public AccountController(IUserService userService,UserManager<OwinUser> userManager)
+        public AccountController(IUserService userService,UserManager<OwinUser,int> userManager)
         {
             this.userService = userService;
-            this.userManager = userManager;
+            this.userManager = userManager;       
         }
 
         [AllowAnonymous]

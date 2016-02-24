@@ -6,18 +6,18 @@ using System.Web;
 
 namespace Wunderlist.Web.Models
 {
-    public class OwinUser : IUser
+    public class OwinUser : IUser<int>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string UserPasswordHash { get; set; }
-        public string Email { get; set; }
+        public string Email { get; set; }      
+
         public OwinUser()
         {
-            Id = Guid.NewGuid().ToString();
-        }
 
-        public OwinUser(string name):this()
+        }
+        public OwinUser(string name)
         {
             UserName = name;
         }
