@@ -26,6 +26,8 @@ namespace Wunderlist.Models
 
         public int NumberInList { get; set; }
 
+        public bool IsMarked { get; set; }
+
         public int ToDoItemListId { get; set; }
 
         public virtual ICollection<Comment> CommentsList{ get; set; }

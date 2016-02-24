@@ -63,24 +63,32 @@ namespace Wunderlist.Service.Services
                 for (int i = item.NumberInList + 1; i < newNumberInList; i++)
                 {
                     list[i].NumberInList = list[i-1].NumberInList;
-                }
-                list[item.NumberInList].NumberInList = newNumberInList;
+                }            
             }
+            if (item.NumberInList > newNumberInList)
+            {
+                for (int i = item.NumberInList - 1; i > newNumberInList; i--)
+                {
+                    list[i].NumberInList = list[i + 1].NumberInList;
+                }
+            }
+            list[item.NumberInList].NumberInList = newNumberInList;
             itemList.ToDoItemsList = list;
             Update(itemList);
         }
 
 
-        public bool AddUserInList(int id, UserProfile userProfile)
+      /*  public bool AddUserInList(int id, UserProfile userProfile)
         {
-            var category = repository.GetById(id);
-            if (category.ProfilesList.Contains(userProfile))
+            var toDoItemList = repository.GetById(id);
+            if (toDoItemList.ProfilesList.Contains(userProfile))
             {
                 return false;
             }
-            category.ProfilesList.Add(userProfile);
+            toDoItemList.ProfilesList.Add(userProfile);
+
             uoWork.Commit();
             return true;
-        }
+        }*/
     }
 }

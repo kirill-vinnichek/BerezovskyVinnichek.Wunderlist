@@ -31,8 +31,7 @@ namespace Wunderlist.Service.Services
         {
             var task = GetById(id);
             task.CurrentState = status;
-            repository.Update(task);
-            uoWork.Commit();
+            Update(task);
         }
 
         public void Delete(int id)
