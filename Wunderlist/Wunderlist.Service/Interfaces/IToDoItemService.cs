@@ -15,5 +15,6 @@ namespace Wunderlist.Service.Interfaces
         void Delete(int id);
         ToDoItem GetById(int id);
         IEnumerable<ToDoItem> GetAll(int id);
+        void ChangeStatus(int id, Status status);
     }
 }

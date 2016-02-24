@@ -27,6 +27,14 @@ namespace Wunderlist.Service.Services
             uoWork.Commit();
         }
 
+        public void ChangeStatus(int id, Status status)
+        {
+            var task = GetById(id);
+            task.CurrentState = status;
+            repository.Update(task);
+            uoWork.Commit();
+        }
+
         public void Delete(int id)
         {
             repository.Delete(t=>t.ID==id);
@@ -42,13 +50,15 @@ namespace Wunderlist.Service.Services
 
         public IEnumerable<ToDoItem> GetAll(int id)
         {
-            return repository.GetMany(t => t.CategoryId == id);
+            return repository.GetMany(t => t.ToDoItemListId == id);
         }
 
         public ToDoItem GetById(int id)
         {
             return repository.GetById(id);
         }
+
+
 
         public void Update(ToDoItem entity)
         {

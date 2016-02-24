@@ -12,7 +12,7 @@ namespace Wunderlist.Service.Interfaces
         void Add(UserProfile entity);
         void Update(UserProfile entity);
         void Delete(UserProfile entity);
-        void Delete(int id);
+        void Delete(int id);    
         UserProfile GetById(int id);       
     }
 }

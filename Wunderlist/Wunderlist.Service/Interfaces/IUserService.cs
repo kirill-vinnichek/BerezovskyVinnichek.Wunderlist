@@ -14,7 +14,7 @@ namespace Wunderlist.Service.Interfaces
         void Update(User entity);
         void Delete(User entity);
         void Delete(string id);
-        User GetById(string id);
+        User GetById(int id);
         IEnumerable<User> GetAll();
         User GetByEmail(string email);
     }

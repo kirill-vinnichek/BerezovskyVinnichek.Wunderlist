@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Wunderlist.Models
 {
+    public enum Status
+    {
+        New,
+        Unfinished,
+        Сompleted
+    }
     public class ToDoItem
     {
-        public enum Status
-        {
-            New,
-            Unfinished,
-            Сompleted
-        }
+        
         public int ID { get; set; }
 
         public string Text { get; set; }
@@ -25,7 +26,7 @@ namespace Wunderlist.Models
 
         public int NumberInList { get; set; }
 
-        public int CategoryId { get; set; }
+        public int ToDoItemListId { get; set; }
 
         public virtual ICollection<Comment> CommentsList{ get; set; }
     }

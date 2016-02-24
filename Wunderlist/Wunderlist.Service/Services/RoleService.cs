@@ -54,7 +54,7 @@ namespace Wunderlist.Service
             uoWork.Commit();
         }
 
-        public Role GetById(string id)
+        public Role GetById(int id)
         {
             return repository.GetById(id);
         }

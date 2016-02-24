@@ -8,10 +8,10 @@ using Wunderlist.Models;
 
 namespace Wunderlist.Data.Repositories
 {
-    public class ToDoItemListRepository: RepositoryBase<ToDoItemList>, ICategoryRepository
+    public class ToDoItemListRepository: RepositoryBase<ToDoItemList>, IToDoItemListRepository
     {
         public ToDoItemListRepository(IDatabaseFactory dbF) : base(dbF) { }
     }
-    public interface ICategoryRepository : IRepository<ToDoItemList> { }
+    public interface IToDoItemListRepository : IRepository<ToDoItemList> { }
 }
 

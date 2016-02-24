@@ -13,7 +13,7 @@ namespace Wunderlist.Service.Interfaces
         void Update(Role entity);
         void Delete(Role entity);
         void Delete(string id);
-        Role GetById(string id);
+        Role GetById(int id);
         IEnumerable<Role> GetAll();
         Role GetByName(string roleName);
     }

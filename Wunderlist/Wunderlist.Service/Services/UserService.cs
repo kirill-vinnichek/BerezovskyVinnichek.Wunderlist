@@ -39,7 +39,7 @@ namespace Wunderlist.Service.Services
             return repository.GetAll();
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             repository.Delete(u=>u.Id==id);
             uoWork.Commit();

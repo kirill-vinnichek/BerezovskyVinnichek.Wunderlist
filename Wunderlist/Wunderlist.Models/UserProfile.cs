@@ -11,6 +11,6 @@ namespace Wunderlist.Models
         public int ID { get; set; }
         public virtual ICollection<ToDoItemList> ProfileToDoItemListList { get; set; }
         public int ProfileBackground { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

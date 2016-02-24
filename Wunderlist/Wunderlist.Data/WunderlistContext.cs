@@ -33,7 +33,7 @@ namespace Wunderlist.Data
         }
 
 
-        public virtual void Commint()
+        public virtual void Commit()
         {
             base.SaveChanges();
         }

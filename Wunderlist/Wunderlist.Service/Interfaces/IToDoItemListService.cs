@@ -8,7 +8,7 @@ using Wunderlist.Models;
 
 namespace Wunderlist.Service.Interfaces
 {
-    public interface ICategoryService
+    public interface IToDoItemListService
     {
         void Add(ToDoItemList entity);
         void Update(ToDoItemList entity);
