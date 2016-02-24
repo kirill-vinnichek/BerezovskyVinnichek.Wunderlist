@@ -8,7 +8,7 @@ namespace Wunderlist.Models
 {
     public class UserProfile
     {
-        public int ID { get; set; }
+        public int ID { get;protected set; }
         public virtual ICollection<ToDoItemList> ProfileToDoItemListList { get; set; }
         public int ProfileBackground { get; set; }
         public int UserId { get; set; }

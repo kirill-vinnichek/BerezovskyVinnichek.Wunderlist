@@ -15,7 +15,7 @@ namespace Wunderlist.Models
     public class ToDoItem
     {
         
-        public int ID { get; set; }
+        public int ID { get;protected set; }
 
         public string Text { get; set; }
 
