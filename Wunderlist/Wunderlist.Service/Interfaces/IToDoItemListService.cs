@@ -15,7 +15,6 @@ namespace Wunderlist.Service.Interfaces
         void Delete(ToDoItemList entity);
         void Delete(int id);
         ToDoItemList GetById(int id);       
-       // bool AddUserInList(int id,UserProfile userProfile);
         void ChangeItemsOrder(int id, int newNumberInList);
     }
 }

@@ -76,19 +76,5 @@ namespace Wunderlist.Service.Services
             itemList.ToDoItemsList = list;
             Update(itemList);
         }
-
-
-      /*  public bool AddUserInList(int id, UserProfile userProfile)
-        {
-            var toDoItemList = repository.GetById(id);
-            if (toDoItemList.ProfilesList.Contains(userProfile))
-            {
-                return false;
-            }
-            toDoItemList.ProfilesList.Add(userProfile);
-
-            uoWork.Commit();
-            return true;
-        }*/
     }
 }

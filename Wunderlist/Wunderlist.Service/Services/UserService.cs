@@ -50,7 +50,7 @@ namespace Wunderlist.Service.Services
             return repository.Get(u => u.Email.Contains(email));
         }
 
-        public User GetById(string id)
+        public User GetById(int id)
         {
             return repository.GetById(id);
         }
