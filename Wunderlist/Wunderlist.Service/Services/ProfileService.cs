@@ -1,53 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
-using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
+﻿using Epam.Wunderlist.DataAccess.Interfaces;
+using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Services.Interfaces;
 
-namespace Wunderlist.Service.Services
+namespace Epam.Wunderlist.Services.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly IUnitOfWork uoWork;
-        private readonly IProfileRepository repository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProfileRepository _repository;
 
         public ProfileService(IUnitOfWork uoW, IProfileRepository rep)
         {
-            this.repository = rep;
-            this.uoWork = uoW;
+            this._repository = rep;
+            this._unitOfWork = uoW;
         }
         public void Add(UserProfile entity)
         {
-            repository.Add(entity);
-            uoWork.Commit();
+            _repository.Add(entity);
+            _unitOfWork.Commit();
         }
 
         public void Delete(int id)
         {
-            repository.Delete(p=>p.ID==id);
-            uoWork.Commit();
+            _repository.Delete(p=>p.Id==id);
+            _unitOfWork.Commit();
         }
 
         public void Delete(UserProfile entity)
         {
-            var profile = GetById(entity.ID);
-            repository.Delete(profile);
-            uoWork.Commit();
+            var profile = GetById(entity.Id);
+            _repository.Delete(profile);
+            _unitOfWork.Commit();
         }
 
         public UserProfile GetById(int id)
         {
-            return repository.GetById(id);
+            return _repository.GetById(id);
         }
 
         public void Update(UserProfile entity)
         {
-            repository.Update(entity);
-            uoWork.Commit();
+            _repository.Update(entity);
+            _unitOfWork.Commit();
         }
     }
 }

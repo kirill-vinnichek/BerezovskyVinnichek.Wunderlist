@@ -1,62 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
-using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.DataAccess.Interfaces;
+using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Services.Interfaces;
 
-namespace Wunderlist.Service
+namespace Epam.Wunderlist.Services.Services
 {
     public class RoleService:IRoleService
     {
-        private readonly IUnitOfWork uoWork;
-        private readonly IRoleRepository repository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRoleRepository _repository;
 
         public RoleService(IUnitOfWork uow,IRoleRepository rep)
         {
-            this.repository = rep;
-            this.uoWork = uow;
+            this._repository = rep;
+            this._unitOfWork = uow;
         }
 
         public void Add(Role entity)
         {
-            repository.Add(entity);
-            uoWork.Commit();
+            _repository.Add(entity);
+            _unitOfWork.Commit();
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
-            repository.Delete(r=>r.Id==id);
-            uoWork.Commit();
+            _repository.Delete(r=>r.Id==id);
+            _unitOfWork.Commit();
         }
 
         public void Delete(Role entity)
         {
             var role = GetById(entity.Id);
-            repository.Delete(role);
-            uoWork.Commit();
+            _repository.Delete(role);
+            _unitOfWork.Commit();
         }
 
         public IEnumerable<Role> GetAll()
         {
-            return repository.GetAll();
+            return _repository.GetAll();
         }
 
 
         public Role GetByName(string roleName)
         {
-            return repository.Get(r => r.Name.ToLower() == roleName.ToLower());
+            return _repository.Get(r => r.Name.ToLower() == roleName.ToLower());
         }
 
         public void Update(Role entity)
         {
-            repository.Update(entity);
-            uoWork.Commit();
+            _repository.Update(entity);
+            _unitOfWork.Commit();
         }
 
-        public Role GetById(string id)
+        public Role GetById(int id)
         {
-            return repository.GetById(id);
+            return _repository.GetById(id);
         }
 
 

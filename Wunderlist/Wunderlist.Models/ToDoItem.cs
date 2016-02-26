@@ -4,28 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wunderlist.Models
+namespace Epam.Wunderlist.Models
 {
     public class ToDoItem
     {
-        public enum Status
-        {
-            New,
-            Unfinished,
-            Сompleted
-        }
-        public int ID { get; set; }
+        
+        public int Id { get;protected set; }
 
         public string Text { get; set; }
 
         public DateTime? Date { get; set; }
 
 
-        public Status CurrentState { get; set; }
+        public ToDoItemStatus CurrentState { get; set; }
 
         public int NumberInList { get; set; }
 
-        public int CategoryId { get; set; }
+        public bool IsMarked { get; set; }
+
+        public int ToDoItemListId { get; set; }
 
         public virtual ICollection<Comment> CommentsList{ get; set; }
     }

@@ -1,13 +1,12 @@
-﻿using Autofac;
+﻿using System.Reflection;
+using Autofac;
 using Autofac.Integration.Mvc;
+using Epam.Wunderlist.DependencyResolver.Modules;
+using Epam.Wunderlist.Web.Models;
 using Microsoft.AspNet.Identity;
-using System.Reflection;
-using System.Web.Mvc;
-using Wunderlist.Service.Core;
 using Wunderlist.Web.Infrastructure;
-using Wunderlist.Web.Models;
 
-namespace Wunderlist.Web
+namespace Epam.Wunderlist.Web
 {
     public static class AutofacConfig
     {
@@ -16,6 +15,7 @@ namespace Wunderlist.Web
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterFilterProvider();
+            builder.RegisterModule(new AutofacDataModule());
             builder.RegisterModule(new AutofacServiceModule());
 
             builder.RegisterType<WunderlistUserStore>().As<IUserStore<OwinUser,int>>().InstancePerRequest();
@@ -24,7 +24,7 @@ namespace Wunderlist.Web
 
             IContainer container = builder.Build();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            System.Web.Mvc.DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

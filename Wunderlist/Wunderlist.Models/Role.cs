@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Wunderlist.Models
+namespace Epam.Wunderlist.Models
 {
     public class Role 
     {
-        public string Id { get; set; }
+        public int Id { get;protected set; }
 
         public string Name { get; set; }
 

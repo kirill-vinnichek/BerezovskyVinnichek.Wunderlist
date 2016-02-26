@@ -7,8 +7,8 @@
     <ProjectGuid>{7A056ECD-4E65-4ADD-81A4-A1278E32A01B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wunderlist.Data</RootNamespace>
-    <AssemblyName>Wunderlist.Data</AssemblyName>
+    <RootNamespace>Epam.Wunderlist.DataAccess.MsSql</RootNamespace>
+    <AssemblyName>Epam.Wunderlist.DataAccess.MsSql</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,14 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CommentConfiguration.cs" />
+    <Compile Include="Configuration\PictureConfiguration.cs" />
     <Compile Include="Configuration\RoleConfiguration.cs" />
+    <Compile Include="Configuration\ToDoItemConfiguration.cs" />
+    <Compile Include="Configuration\ToDoItemListConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
-    <Compile Include="Core\AutofacDataModule.cs" />
+    <Compile Include="Configuration\UserProfileConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDatabaseFactory.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,9 +88,13 @@
     <Compile Include="WunderlistContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wunderlist.Models\Wunderlist.Model.csproj">
+    <ProjectReference Include="..\Epam.Wunderlist.DataAccess.Interfaces\Epam.Wunderlist.DataAccess.Interfaces.csproj">
+      <Project>{78aca394-2979-46c8-a9f7-52f5346b875e}</Project>
+      <Name>Epam.Wunderlist.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Models\Epam.Wunderlist.Models.csproj">
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
-      <Name>Wunderlist.Model</Name>
+      <Name>Epam.Wunderlist.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

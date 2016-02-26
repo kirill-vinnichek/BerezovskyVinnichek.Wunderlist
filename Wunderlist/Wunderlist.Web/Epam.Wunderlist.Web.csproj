@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wunderlist.Web</RootNamespace>
-    <AssemblyName>Wunderlist.Web</AssemblyName>
+    <RootNamespace>Epam.Wunderlist.Web</RootNamespace>
+    <AssemblyName>Epam.Wunderlist.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -256,13 +256,17 @@
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wunderlist.Models\Wunderlist.Model.csproj">
-      <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
-      <Name>Wunderlist.Model</Name>
+    <ProjectReference Include="..\Epam.Wunderlist.DependencyResolver\Epam.Wunderlist.DependencyResolver.csproj">
+      <Project>{81562776-1cdb-41eb-8f9f-1c4e24e399e3}</Project>
+      <Name>Epam.Wunderlist.DependencyResolver</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.Service\Wunderlist.Service.csproj">
+    <ProjectReference Include="..\Wunderlist.Models\Epam.Wunderlist.Models.csproj">
+      <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
+      <Name>Epam.Wunderlist.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Service\Epam.Wunderlist.Services.csproj">
       <Project>{816623ae-1bc8-4577-96b0-d698fde81975}</Project>
-      <Name>Wunderlist.Service</Name>
+      <Name>Epam.Wunderlist.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

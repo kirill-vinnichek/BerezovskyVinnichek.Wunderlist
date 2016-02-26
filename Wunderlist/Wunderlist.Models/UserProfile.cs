@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wunderlist.Models
+namespace Epam.Wunderlist.Models
 {
     public class UserProfile
     {
-        public int ID { get; set; }
+        public int Id { get;protected set; }
         public virtual ICollection<ToDoItemList> ProfileToDoItemListList { get; set; }
         public int ProfileBackground { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

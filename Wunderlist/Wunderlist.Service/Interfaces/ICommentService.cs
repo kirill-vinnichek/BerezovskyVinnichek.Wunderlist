@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Models;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Service.Interfaces
+namespace Epam.Wunderlist.Services.Interfaces
 {
     public interface ICommentService
     {
@@ -14,6 +10,6 @@ namespace Wunderlist.Service.Interfaces
         void Delete(Comment entity);
         void Delete(int id);
         Comment GetById(int id);
-        IEnumerable<Comment> GetAll(string id);
+        IEnumerable<Comment> GetAll(int id);
     }
 }

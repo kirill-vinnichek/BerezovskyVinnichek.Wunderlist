@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Epam.Wunderlist.Web;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Wunderlist.Web.Startup))]
-namespace Wunderlist.Web
+[assembly: OwinStartup(typeof(Startup))]
+namespace Epam.Wunderlist.Web
 {
     public partial class Startup
     {

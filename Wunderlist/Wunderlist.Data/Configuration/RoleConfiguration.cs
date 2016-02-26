@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Models;
+﻿using System.Data.Entity.ModelConfiguration;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Data.Configuration
+namespace Epam.Wunderlist.DataAccess.MsSql.Configuration
 {
-   public class RoleConfiguration: EntityTypeConfiguration<Role>
+    internal class RoleConfiguration: EntityTypeConfiguration<Role>
     {
         public RoleConfiguration()
         {

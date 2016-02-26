@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wunderlist.Models
+namespace Epam.Wunderlist.Models
 {
     public class Picture
     {
-        public int ID { get; set; }
+        public int Id { get;protected set; }
 
         public byte[] PictureData { get; set; }
 
