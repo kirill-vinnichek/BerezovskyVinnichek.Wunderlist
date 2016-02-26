@@ -31,11 +31,9 @@ namespace Epam.Wunderlist.Web
             bundles.Add(new StyleBundle("~/css/css").Include(
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/css/register").Include(
-                     "~/Content/register/register.css"));
+            bundles.Add(new StyleBundle("~/css/account").Include(
+                     "~/Content/account.css"));
 
-            bundles.Add(new StyleBundle("~/css/register").Include(
-                  "~/Content/login/login.css"));
         }
     }
 }

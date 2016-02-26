@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется следующим образом
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных с этой сборкой.
-[assembly: AssemblyTitle("Wunderlist.Web")]
+[assembly: AssemblyTitle("Epam.Wunderlist.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wunderlist.Web")]
+[assembly: AssemblyProduct("Epam.Wunderlist.Web")]
 [assembly: AssemblyCopyright("© , 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

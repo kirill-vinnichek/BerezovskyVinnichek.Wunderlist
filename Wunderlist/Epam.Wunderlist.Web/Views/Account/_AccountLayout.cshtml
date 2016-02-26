@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/account")
     @RenderSection("style", required: false)   
     @Scripts.Render("~/script/modernizr")
 
@@ -16,6 +17,7 @@
     </div>
 
     @Scripts.Render("~/script/jquery")
+    @Scripts.Render("~/script/jqueryval")
     @Scripts.Render("~/script/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

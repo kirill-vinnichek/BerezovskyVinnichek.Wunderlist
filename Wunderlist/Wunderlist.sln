@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Web", "Wunderlist.Web\Epam.Wunderlist.Web.csproj", "{7AD8D8D2-19E1-4ECA-90B3-3CEBDCF1B728}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Web", "Epam.Wunderlist.Web\Epam.Wunderlist.Web.csproj", "{7AD8D8D2-19E1-4ECA-90B3-3CEBDCF1B728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.DataAccess.MsSql", "Wunderlist.Data\Epam.Wunderlist.DataAccess.MsSql.csproj", "{7A056ECD-4E65-4ADD-81A4-A1278E32A01B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.DataAccess.MsSql", "Epam.Wunderlist.DataAccess.MsSql\Epam.Wunderlist.DataAccess.MsSql.csproj", "{7A056ECD-4E65-4ADD-81A4-A1278E32A01B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Models", "Wunderlist.Models\Epam.Wunderlist.Models.csproj", "{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Models", "Epam.Wunderlist.Models\Epam.Wunderlist.Models.csproj", "{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Services", "Wunderlist.Service\Epam.Wunderlist.Services.csproj", "{816623AE-1BC8-4577-96B0-D698FDE81975}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.Services", "Epam.Wunderlist.Services\Epam.Wunderlist.Services.csproj", "{816623AE-1BC8-4577-96B0-D698FDE81975}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Wunderlist.DataAccess.Interfaces", "Epam.Wunderlist.DataAccess.Interfaces\Epam.Wunderlist.DataAccess.Interfaces.csproj", "{78ACA394-2979-46C8-A9F7-52F5346B875E}"
 EndProject

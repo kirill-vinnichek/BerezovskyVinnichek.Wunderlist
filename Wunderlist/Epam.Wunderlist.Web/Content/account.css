@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #fafafa;
 }
 
@@ -28,7 +28,7 @@ ul {
     width: 80px;
     height: 80px;
     background-size: 80px;
-    background-image: url('../assets/wl_icon.png');
+    background-image: url('imgs/wl_icon.png');
 }
 
 #vert {
