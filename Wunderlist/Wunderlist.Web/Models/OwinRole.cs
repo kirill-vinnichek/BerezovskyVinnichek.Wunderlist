@@ -6,17 +6,16 @@ using System.Web;
 
 namespace Wunderlist.Web.Models
 {
-    public class OwinRole:IRole
+    public class OwinRole:IRole<int>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-
         public OwinRole()
         {
-            Id = Guid.NewGuid().ToString();
+
         }
 
-        public OwinRole(string name):this()
+        public OwinRole(string name)
         {
             Name = name;
         }

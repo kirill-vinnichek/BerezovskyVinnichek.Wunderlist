@@ -8,7 +8,7 @@ using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class WunderlistUserStore : IUserStore<OwinUser>, IUserPasswordStore<OwinUser>, IUserEmailStore<OwinUser>
+    public class WunderlistUserStore : IUserStore<OwinUser,int>, IUserPasswordStore<OwinUser, int>, IUserEmailStore<OwinUser, int>
     {
         private readonly IUserService userService;
        
@@ -52,7 +52,7 @@ namespace Wunderlist.Web.Infrastructure
             return Task.Run(() => Mapper.Map<OwinUser>(userService.GetByEmail(userName)));
         }
 
-        public Task<OwinUser> FindByIdAsync(string userId)
+        public Task<OwinUser> FindByIdAsync(int userId)
         {
             if (string.IsNullOrEmpty(userId))
                 throw new ArgumentException("userId is null or empty");

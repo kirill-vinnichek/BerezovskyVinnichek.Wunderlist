@@ -18,9 +18,9 @@ namespace Wunderlist.Web
             builder.RegisterFilterProvider();
             builder.RegisterModule(new AutofacServiceModule());
 
-            builder.RegisterType<WunderlistUserStore>().As<IUserStore<OwinUser>>().InstancePerRequest();
-            builder.RegisterType<WunderlistRoleStore>().As<IRoleStore<OwinRole>>().InstancePerRequest();
-            builder.RegisterType<WunderlistUserManager>().As<UserManager<OwinUser>>().InstancePerRequest();
+            builder.RegisterType<WunderlistUserStore>().As<IUserStore<OwinUser,int>>().InstancePerRequest();
+            builder.RegisterType<WunderlistRoleStore>().As<IRoleStore<OwinRole,int>>().InstancePerRequest();
+            builder.RegisterType<WunderlistUserManager>().As<UserManager<OwinUser,int>>().InstancePerRequest();
 
             IContainer container = builder.Build();
 

@@ -7,11 +7,11 @@ using Wunderlist.Web.Models;
 
 namespace Wunderlist.Web.Infrastructure
 {
-    public class WunderlistUserManager : UserManager<OwinUser>
+    public class WunderlistUserManager : UserManager<OwinUser,int>
     {
-        public WunderlistUserManager(IUserStore<OwinUser> store) : base(store)
+        public WunderlistUserManager(IUserStore<OwinUser, int> store) : base(store)
         {
-            UserValidator = new UserValidator<OwinUser>(this)
+            UserValidator = new UserValidator<OwinUser,int>(this)
             {
                 RequireUniqueEmail = true
             };
