@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A7F8DE6C-835E-4C4B-B7A1-21F491E95CCF}</ProjectGuid>
+    <ProjectGuid>{81562776-1CDB-41EB-8F9F-1C4E24E399E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wunderlist.Models</RootNamespace>
-    <AssemblyName>Wunderlist.Models</AssemblyName>
+    <RootNamespace>Epam.Wunderlist.DependencyResolver</RootNamespace>
+    <AssemblyName>Epam.Wunderlist.DependencyResolver</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,17 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="User.cs" />
-    <Compile Include="ToDoItemList.cs" />
-    <Compile Include="Comment.cs" />
-    <Compile Include="Picture.cs" />
-    <Compile Include="UserProfile.cs" />
+    <Compile Include="Modules\AutofacDataModule.cs" />
+    <Compile Include="Modules\AutofacServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="ToDoItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Epam.Wunderlist.DataAccess.Interfaces\Epam.Wunderlist.DataAccess.Interfaces.csproj">
+      <Project>{78aca394-2979-46c8-a9f7-52f5346b875e}</Project>
+      <Name>Epam.Wunderlist.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Data\Epam.Wunderlist.DataAccess.MsSql.csproj">
+      <Project>{7a056ecd-4e65-4add-81a4-a1278e32a01b}</Project>
+      <Name>Epam.Wunderlist.DataAccess.MsSql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wunderlist.Service\Epam.Wunderlist.Services.csproj">
+      <Project>{816623ae-1bc8-4577-96b0-d698fde81975}</Project>
+      <Name>Epam.Wunderlist.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

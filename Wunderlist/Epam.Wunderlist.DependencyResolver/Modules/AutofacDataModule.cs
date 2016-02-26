@@ -1,17 +1,11 @@
-﻿
-using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
+﻿using Autofac;
+using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
+using Epam.Wunderlist.DataAccess.MsSql.Infrastructure;
+using Epam.Wunderlist.DataAccess.MsSql.Repositories;
 
-namespace Wunderlist.Data.Core
+namespace Epam.Wunderlist.DependencyResolver.Modules
 {
-   public class AutofacDataModule: Autofac.Module
+   public class AutofacDataModule: Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -20,7 +14,6 @@ namespace Wunderlist.Data.Core
             builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
-
             base.Load(builder);
         }
     }

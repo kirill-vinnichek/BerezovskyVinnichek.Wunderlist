@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Wunderlist.Models
+namespace Epam.Wunderlist.Models
 {
     public class User 
     {       

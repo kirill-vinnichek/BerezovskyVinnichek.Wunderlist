@@ -1,33 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
-using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.DataAccess.Interfaces;
+using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Services.Interfaces;
 
-namespace Wunderlist.Service.Services
+namespace Epam.Wunderlist.Services.Services
 {
     public class ToDoItemService : IToDoItemService
     {
-        private readonly IToDoItemRepository repository;
-        private readonly IUnitOfWork uoWork;
+        private readonly IToDoItemRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow)
         {
-            this.repository = rep;
-            this.uoWork = uow;
+            this._repository = rep;
+            this._unitOfWork = uow;
         }
 
         public void Add(ToDoItem entity)
         {
-            repository.Add(entity);
-            uoWork.Commit();
+            _repository.Add(entity);
+            _unitOfWork.Commit();
         }
 
-        public void ChangeStatus(int id, Status status)
+        public void ChangeStatus(int id, ToDoItemStatus status)
         {
             var task = GetById(id);
             task.CurrentState = status;
@@ -36,33 +32,33 @@ namespace Wunderlist.Service.Services
 
         public void Delete(int id)
         {
-            repository.Delete(t=>t.ID==id);
-            uoWork.Commit();
+            _repository.Delete(t=>t.Id==id);
+            _unitOfWork.Commit();
         }
 
         public void Delete(ToDoItem entity)
         {
-            var toDoItem = GetById(entity.ID);
-            repository.Delete(toDoItem);
-            uoWork.Commit();
+            var toDoItem = GetById(entity.Id);
+            _repository.Delete(toDoItem);
+            _unitOfWork.Commit();
         }
 
         public IEnumerable<ToDoItem> GetAll(int id)
         {
-            return repository.GetMany(t => t.ToDoItemListId == id);
+            return _repository.GetMany(t => t.ToDoItemListId == id);
         }
 
         public ToDoItem GetById(int id)
         {
-            return repository.GetById(id);
+            return _repository.GetById(id);
         }
 
 
 
         public void Update(ToDoItem entity)
         {
-            repository.Update(entity);
-            uoWork.Commit();
+            _repository.Update(entity);
+            _unitOfWork.Commit();
         }
     }
 }

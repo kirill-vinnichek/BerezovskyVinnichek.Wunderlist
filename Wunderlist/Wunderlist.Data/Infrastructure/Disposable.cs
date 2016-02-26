@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Wunderlist.Data.Infrastructure
+namespace Epam.Wunderlist.DataAccess.MsSql.Infrastructure
 {
     public class Disposable : IDisposable
     {
-        private bool disposed;
+        private bool _disposed;
 
         ~Disposable()
         {
@@ -17,11 +13,11 @@ namespace Wunderlist.Data.Infrastructure
 
         private void Dispose(bool disposing)
         {
-            if(!disposed && disposing)
+            if(!_disposed && disposing)
             {
                 DisposeCore();
             }
-            disposed = true;
+            _disposed = true;
         }
 
         public void Dispose()

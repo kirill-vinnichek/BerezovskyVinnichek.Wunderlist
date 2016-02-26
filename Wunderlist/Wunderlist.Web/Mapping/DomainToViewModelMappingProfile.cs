@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Wunderlist.Models;
-using Wunderlist.Web.Models;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Web.Models;
 
-namespace Wunderlist.Web.Mapping
+namespace Epam.Wunderlist.Web.Mapping
 {
     public class DomainToViewModelMappingProfile: AutoMapper.Profile
     {

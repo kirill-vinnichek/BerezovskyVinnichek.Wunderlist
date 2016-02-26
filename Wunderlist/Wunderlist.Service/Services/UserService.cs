@@ -1,65 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Data.Infrastructure;
-using Wunderlist.Data.Repositories;
-using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.DataAccess.Interfaces;
+using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Services.Interfaces;
 
-namespace Wunderlist.Service.Services
+namespace Epam.Wunderlist.Services.Services
 {
     public class UserService:IUserService
     {
-        private readonly IUnitOfWork uoWork;
-        private readonly IUserRepository repository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _repository;
 
         public UserService(IUnitOfWork uoW, IUserRepository rep)
         {
-            this.repository = rep;
-            this.uoWork = uoW;
+            this._repository = rep;
+            this._unitOfWork = uoW;
         }
         public void Add(User entity)
         {
-            repository.Add(entity);
-            uoWork.Commit();
+            _repository.Add(entity);
+            _unitOfWork.Commit();
         }
 
         public void Delete(User entity)
         {
             var user = GetById(entity.Id);
-            repository.Delete(user);
-            uoWork.Commit();
+            _repository.Delete(user);
+            _unitOfWork.Commit();
         }
 
         public IEnumerable<User> GetAll()
         {
-            return repository.GetAll();
+            return _repository.GetAll();
         }
 
         public void Delete(int id)
         {
-            repository.Delete(u=>u.Id==id);
-            uoWork.Commit();
+            _repository.Delete(u=>u.Id==id);
+            _unitOfWork.Commit();
         }
 
         public User GetByEmail(string email)
         {
-            return repository.Get(u => u.Email.Contains(email));
+            return _repository.Get(u => u.Email.Contains(email));
         }
 
         public User GetById(int id)
         {
-            return repository.GetById(id);
+            return _repository.GetById(id);
         }
 
 
         public void Update(User entity)
         {
-            repository.Update(entity);
-            uoWork.Commit();
+            _repository.Update(entity);
+            _unitOfWork.Commit();
         }
     }
 }

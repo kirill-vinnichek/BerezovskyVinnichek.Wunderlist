@@ -1,32 +1,26 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Threading.Tasks;
-using Wunderlist.Models;
-using Wunderlist.Service;
-using Wunderlist.Web.ViewModels;
-using Wunderlist.Web.Models;
-using Wunderlist.Service.Services;
-using Wunderlist.Service.Interfaces;
+using Epam.Wunderlist.Services.Interfaces;
+using Epam.Wunderlist.Web.Models;
+using Epam.Wunderlist.Web.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
-namespace Wunderlist.Web.Controllers
+namespace Epam.Wunderlist.Web.Controllers
 {
     //TODO: Избавится от EF в Web проекте. Спросить как?
     [Authorize]
     public class AccountController : Controller
     {
 
-        private readonly IUserService userService;
-        private readonly UserManager<OwinUser> userManager;
+        private readonly IUserService _userService;
+        private readonly UserManager<OwinUser> _userManager;
 
         public AccountController(IUserService userService,UserManager<OwinUser> userManager)
         {
-            this.userService = userService;
-            this.userManager = userManager;
+            this._userService = userService;
+            this._userManager = userManager;
         }
 
         [AllowAnonymous]
@@ -44,7 +38,7 @@ namespace Wunderlist.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await userManager.FindAsync(viewModel.Email, viewModel.Password);
+                var user = await _userManager.FindAsync(viewModel.Email, viewModel.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, true);
@@ -75,8 +69,8 @@ namespace Wunderlist.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new OwinUser() { UserName = viewModel.UserName,Email = viewModel.Email };
-                userManager.UserValidator = new UserValidator<OwinUser>(userManager) { RequireUniqueEmail = true };
-                var result = await userManager.CreateAsync(user, viewModel.Password);
+                _userManager.UserValidator = new UserValidator<OwinUser>(_userManager) { RequireUniqueEmail = true };
+                var result = await _userManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, true);
@@ -112,7 +106,7 @@ namespace Wunderlist.Web.Controllers
         private async System.Threading.Tasks.Task SignInAsync(OwinUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            var identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            var identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 

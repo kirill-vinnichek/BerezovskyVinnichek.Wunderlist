@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Wunderlist.Data.Configuration;
-using Wunderlist.Models;
+using Epam.Wunderlist.DataAccess.MsSql.Configuration;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Data
+namespace Epam.Wunderlist.DataAccess.MsSql
 {
     public class WunderlistContext : DbContext
     {       
@@ -30,6 +30,11 @@ namespace Wunderlist.Data
 
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
+            modelBuilder.Configurations.Add(new PictureConfiguration());
+            modelBuilder.Configurations.Add(new CommentConfiguration());
+            modelBuilder.Configurations.Add(new ToDoItemConfiguration());
+            modelBuilder.Configurations.Add(new ToDoItemListConfiguration());
+            modelBuilder.Configurations.Add(new UserProfileConfiguration());
         }
 
 

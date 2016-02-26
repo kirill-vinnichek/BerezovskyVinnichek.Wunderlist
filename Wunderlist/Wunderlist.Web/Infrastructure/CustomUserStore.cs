@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Threading.Tasks;
-using Wunderlist.Web.Models;
 using AutoMapper;
+using Epam.Wunderlist.Services.Interfaces;
+using Epam.Wunderlist.Web.Models;
 using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {

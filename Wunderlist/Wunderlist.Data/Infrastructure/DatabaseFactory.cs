@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Wunderlist.Data.Infrastructure
+﻿namespace Epam.Wunderlist.DataAccess.MsSql.Infrastructure
 {
     public class DatabaseFactory : Disposable,IDatabaseFactory
     {
 
-        private WunderlistContext context;
+        private WunderlistContext _context;
 
         protected override void DisposeCore()
         {
-            if (context != null)
-                context.Dispose();
+            _context?.Dispose();
         }
 
-        public WunderlistContext Context
-        {
-            get
-            {
-                return context ?? (context = new WunderlistContext());
-            }
-        }
+        public WunderlistContext Context => _context ?? (_context = new WunderlistContext());
     }
 }

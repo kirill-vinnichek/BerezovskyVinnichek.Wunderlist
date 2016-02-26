@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
 
-namespace Wunderlist.Data.Infrastructure
+namespace Epam.Wunderlist.DataAccess.MsSql.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDatabaseFactory databaseFactory;
-        private WunderlistContext dataContext;
+        private readonly IDatabaseFactory _databaseFactory;
+        private WunderlistContext _dataContext;
 
         public UnitOfWork(IDatabaseFactory databaseFactory)
         {
-            this.databaseFactory = databaseFactory;
+            this._databaseFactory = databaseFactory;
         }
 
-        protected WunderlistContext DataContext
-        {
-            get { return dataContext ?? (dataContext = databaseFactory.Context); }
-        }
+        protected WunderlistContext DataContext => _dataContext ?? (_dataContext = _databaseFactory.Context);
 
         public void Commit()
         {

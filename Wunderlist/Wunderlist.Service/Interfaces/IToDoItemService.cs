@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Models;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Service.Interfaces
+namespace Epam.Wunderlist.Services.Interfaces
 {
     public interface IToDoItemService
     {
@@ -15,6 +11,6 @@ namespace Wunderlist.Service.Interfaces
         void Delete(int id);
         ToDoItem GetById(int id);
         IEnumerable<ToDoItem> GetAll(int id);
-        void ChangeStatus(int id, Status status);
+        void ChangeStatus(int id, ToDoItemStatus status);
     }
 }

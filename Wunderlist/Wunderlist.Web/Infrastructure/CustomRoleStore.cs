@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Wunderlist.Web.Models;
 using System.Threading.Tasks;
 using AutoMapper;
+using Epam.Wunderlist.Services.Interfaces;
+using Epam.Wunderlist.Web.Models;
 using Wunderlist.Models;
-using Wunderlist.Service.Interfaces;
 
 namespace Wunderlist.Web.Infrastructure
 {

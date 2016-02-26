@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Models;
+﻿using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Service.Interfaces
+namespace Epam.Wunderlist.Services.Interfaces
 {
     public interface IProfileService
     {

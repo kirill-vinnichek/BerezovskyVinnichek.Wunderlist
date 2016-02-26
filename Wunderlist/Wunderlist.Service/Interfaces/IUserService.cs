@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Wunderlist.Models;
+﻿using System.Collections.Generic;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Service.Interfaces
+namespace Epam.Wunderlist.Services.Interfaces
 {
     public interface IUserService
     {

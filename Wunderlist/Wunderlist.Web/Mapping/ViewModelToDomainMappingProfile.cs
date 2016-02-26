@@ -1,9 +1,8 @@
-﻿using System;
-using AutoMapper;
-using Wunderlist.Web.Models;
-using Wunderlist.Models;
+﻿using AutoMapper;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Web.Models;
 
-namespace Wunderlist.Web.Mapping
+namespace Epam.Wunderlist.Web.Mapping
 {
     public class ViewModelToDomainMappingProfile: AutoMapper.Profile
     {       
