@@ -1,0 +1,40 @@
+body {
+    background-color: #fafafa;
+}
+
+.wrapper {
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    margin: 0px auto;
+    width: 100%;
+}
+
+.header{
+ 
+}
+
+.logo {
+    margin-top: 20px;
+    margin-left:230px;
+    width: 80px;
+    height: 80px;    
+    background-size: 80px; 
+    background-image: url('../assets/wl_icon.png');
+}
+
+#vert {
+    height: 100%;
+    width: 1px;
+    border: none;
+    border-left: 1px solid #000;
+}
+
+.input-group-addon:first-child{
+   position:static;
+}
+
+.external{
+    margin-top: 20px;
+}

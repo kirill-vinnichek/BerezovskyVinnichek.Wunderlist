@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/css/register")
+    @RenderSection("style", required: false)   
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
