@@ -8,10 +8,10 @@ namespace Wunderlist.Web
         
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle("~/script/jquery").Include(
                         "~/Scripts/jquery/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            bundles.Add(new ScriptBundle("~/script/jqueryval").Include(
                         "~/Scripts/jquery/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/script/angular").Include(
@@ -19,23 +19,23 @@ namespace Wunderlist.Web
                 "~/Scripts/angular_lib/angular-route.min.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            bundles.Add(new ScriptBundle("~/script/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/script/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+            bundles.Add(new StyleBundle("~/css/bootstrap").Include(
+                   "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/css/css").Include(
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/css/register").Include(
-                     "~/Content/bootstrap.css",
                      "~/Content/register/register.css"));
 
             bundles.Add(new StyleBundle("~/css/register").Include(
-                  "~/Content/bootstrap.css",
                   "~/Content/login/login.css"));
         }
     }
