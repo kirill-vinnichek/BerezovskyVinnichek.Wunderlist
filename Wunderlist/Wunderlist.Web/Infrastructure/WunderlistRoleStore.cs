@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Threading.Tasks;
 using AutoMapper;
 using Epam.Wunderlist.Services.Interfaces;
 using Epam.Wunderlist.Web.Models;
-using Wunderlist.Models;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Web.Infrastructure
+namespace Epam.Wunderlist.Web.Infrastructure
 {
     public class WunderlistRoleStore : IRoleStore<OwinRole,int>
     {
@@ -43,8 +40,6 @@ namespace Wunderlist.Web.Infrastructure
 
         public Task<OwinRole> FindByIdAsync(int roleId)
         {
-            if (string.IsNullOrEmpty(roleId))
-                throw new ArgumentException("roleId is null or empty");
             return Task.Run(() => Mapper.Map<OwinRole>(roleService.GetById(roleId)));
         }
 

@@ -15,7 +15,7 @@ namespace Epam.Wunderlist.Web.Controllers
     {
 
         private readonly IUserService _userService;
-        private readonly UserManager<OwinUser> _userManager;
+        private readonly UserManager<OwinUser,int> _userManager;
 
         public AccountController(IUserService userService,UserManager<OwinUser,int> userManager)
         {
@@ -70,7 +70,7 @@ namespace Epam.Wunderlist.Web.Controllers
             {
                 var user = new OwinUser() { UserName = viewModel.UserName,Email = viewModel.Email };
                
-                var result = await userManager.CreateAsync(user, viewModel.Password);
+                var result = await _userManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, true);

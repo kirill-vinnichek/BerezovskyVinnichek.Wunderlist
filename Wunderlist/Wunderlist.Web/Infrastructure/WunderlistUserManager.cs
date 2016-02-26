@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Wunderlist.Web.Models;
+﻿using Epam.Wunderlist.Web.Models;
+using Microsoft.AspNet.Identity;
 
-namespace Wunderlist.Web.Infrastructure
+namespace Epam.Wunderlist.Web.Infrastructure
 {
     public class WunderlistUserManager : UserManager<OwinUser,int>
     {

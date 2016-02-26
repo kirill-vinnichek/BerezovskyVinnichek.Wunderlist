@@ -4,7 +4,7 @@ using Autofac.Integration.Mvc;
 using Epam.Wunderlist.DependencyResolver.Modules;
 using Epam.Wunderlist.Web.Models;
 using Microsoft.AspNet.Identity;
-using Wunderlist.Web.Infrastructure;
+using Epam.Wunderlist.Web.Infrastructure;
 
 namespace Epam.Wunderlist.Web
 {

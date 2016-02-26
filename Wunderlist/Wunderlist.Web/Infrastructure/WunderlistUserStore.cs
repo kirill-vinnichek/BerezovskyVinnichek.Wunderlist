@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Epam.Wunderlist.Services.Interfaces;
 using Epam.Wunderlist.Web.Models;
-using Wunderlist.Models;
+using Epam.Wunderlist.Models;
 
-namespace Wunderlist.Web.Infrastructure
+namespace Epam.Wunderlist.Web.Infrastructure
 {
     public class WunderlistUserStore : IUserStore<OwinUser,int>, IUserPasswordStore<OwinUser, int>, IUserEmailStore<OwinUser, int>
     {
@@ -53,9 +53,7 @@ namespace Wunderlist.Web.Infrastructure
         }
 
         public Task<OwinUser> FindByIdAsync(int userId)
-        {
-            if (string.IsNullOrEmpty(userId))
-                throw new ArgumentException("userId is null or empty");
+        {           
             return Task.Run(() => Mapper.Map<OwinUser>(userService.GetById(userId)));
         }
         public Task<OwinUser> FindByEmailAsync(string email)
