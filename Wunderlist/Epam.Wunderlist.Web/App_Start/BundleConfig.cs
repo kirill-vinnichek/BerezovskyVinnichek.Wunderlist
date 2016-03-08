@@ -18,18 +18,23 @@ namespace Epam.Wunderlist.Web
                 "~/Scripts/angular_lib/angular-route.min.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/script/webapp").Include(
+                "~/Scripts/app/app.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/script/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/script/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/css/bootstrap").Include(
-                   "~/Content/bootstrap.css"));
+                   "~/Content/bootstrap.min.css"));
 
-            bundles.Add(new StyleBundle("~/css/css").Include(
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/css/webapp").Include(
+                      "~/Content/webapp.css",
+                      "~/Content/webapp-media.css"));
 
             bundles.Add(new StyleBundle("~/css/account").Include(
                      "~/Content/account.css"));

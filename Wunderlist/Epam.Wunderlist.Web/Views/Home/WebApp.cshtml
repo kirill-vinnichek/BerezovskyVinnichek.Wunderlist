@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wunderlist</title>
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/webapp")
+    @Scripts.Render("~/script/angular")
+    @Scripts.Render("~/script/modernizr")
+</head>
+<body>
+
+    <div class="wrapper background">
+        <div id="sidebar">
+            <div class="sidebar-inner">
+                <div id="search-toolbar">
+                    <a class="toggle-menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+                    <input class="search-input" />
+                    <a class="cancel-search"><span class="glyphicon glyphicon-remove hidden" aria-hidden="true"></span></a>
+                    <a class="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                </div>
+                <div id="user-toolbar">
+                    <a class="user">
+                        <span class="user-avatar"><img src="~/Content/imgs/av_demo.png" /></span>
+                        <span class="user-name">Винничек Кирилл</span>
+                        <span class="user-arrow glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <div class="user-actions">
+                        <a><span class="glyphicon glyphicon-bell"></span></a>
+                        <a><span class="glyphicon glyphicon-phone-alt"></span></a>
+                    </div>
+                </div>
+                <div id="lists">
+                    <ul class="list-collection"></ul>
+                </div>
+                <div class="sidebar-actions">
+                    <a class="add-list">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>Создать список</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="tasks">
+            <div class="list-toolbar">
+                <h3 class="title">Фильмы</h3>
+                <div class="actionBar">
+                    <a>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span>Поделиться</span>
+                    </a>
+                    <a>
+                        <span class="glyphicon glyphicon-sort"></span>
+                        <span>Сортировка</span>
+                    </a>
+                    <a>
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                        <span>Еще</span>
+                    </a>
+                </div>
+            </div>
+            <div class="tasks-main">
+                <div class="add-task">
+                    <a><span class="glyphicon glyphicon-plus"></span></a>
+                    <input class="add-task-input" type="text" placeholder="Добавить задачу..." />
+                </div>
+                <div class="task-list"></div>
+                <h4 class="show-completed">
+                    <a>
+                        Показать завершенные задачи
+                    </a>
+                </h4>
+                @*comleted*@
+                <div class="task-list"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    @Scripts.Render("~/script/jquery")
+    @Scripts.Render("~/script/jqueryval")
+    @Scripts.Render("~/script/bootstrap")
+    <script>
+        $(document).ready(function () {
+            var $window = $(window),
+                $sidebar = $('#sidebar');
+
+            $(".toggle-menu").on("click", function (e) {
+                $sidebar.toggleClass("collapsed");
+                e.preventDefault;
+            });
+            function resize() {
+                var width = $window.width();
+                if (width < 768) {
+                    $sidebar.addClass("collapsed");
+                }
+                else
+                    $sidebar.removeClass("collapsed");
+            }
+            $window.load(resize);
+            $window.resize(resize);
+
+        })
+
+    </script>
+</body>
+</html>

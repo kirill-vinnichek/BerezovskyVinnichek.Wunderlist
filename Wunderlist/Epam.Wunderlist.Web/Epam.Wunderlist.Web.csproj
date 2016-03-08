@@ -197,24 +197,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\account.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\imgs\av_demo.png" />
     <Content Include="Content\imgs\wl_icon.png" />
+    <Content Include="Content\webapp-media.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\webapp.css" />
     <Content Include="Scripts\angular_lib\angular-mocks.js" />
     <Content Include="Scripts\angular_lib\angular-route.js" />
     <Content Include="Scripts\angular_lib\angular-route.min.js" />
     <Content Include="Scripts\angular_lib\angular.js" />
     <Content Include="Scripts\angular_lib\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular_lib\angular.min.js.map" />
     <Content Include="Scripts\angular_lib\angular-route.min.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
@@ -243,14 +255,12 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\_AccountLayout.cshtml" />
+    <Content Include="Views\Home\WebApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
   </ItemGroup>
@@ -263,7 +273,7 @@
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
       <Name>Epam.Wunderlist.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.Service\Epam.Wunderlist.Services.csproj">
+    <ProjectReference Include="..\Epam.Wunderlist.Services\Epam.Wunderlist.Services.csproj">
       <Project>{816623ae-1bc8-4577-96b0-d698fde81975}</Project>
       <Name>Epam.Wunderlist.Services</Name>
     </ProjectReference>
