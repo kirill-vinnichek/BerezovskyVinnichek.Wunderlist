@@ -44,7 +44,6 @@
     <Compile Include="Infrastructure\ICloudStorage.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="IPictureRepository.cs" />
-    <Compile Include="IProfileRepository.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="IRoleRepository.cs" />
     <Compile Include="IToDoItemListRepository.cs" />

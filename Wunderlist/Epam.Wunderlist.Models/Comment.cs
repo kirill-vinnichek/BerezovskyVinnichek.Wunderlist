@@ -11,6 +11,6 @@ namespace Epam.Wunderlist.Models
     {
         public int Id { get;protected set; }
         public User CommentUser { get; set; }
-        public string CommentText { get; set; }
-    }
+        public string CommentText { get; set;}
+        public int ToDoItemId { get; set;}
 }

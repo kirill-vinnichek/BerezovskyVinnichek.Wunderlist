@@ -73,7 +73,6 @@
     <Compile Include="Repositories\ToDoItemListRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\PictureRepository.cs" />
-    <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\ToDoItemRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
