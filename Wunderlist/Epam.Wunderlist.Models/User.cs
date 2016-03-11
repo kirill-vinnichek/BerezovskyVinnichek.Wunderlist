@@ -10,7 +10,7 @@ namespace Epam.Wunderlist.Models
         public string Email { get; set; }
 
         public string UserPasswordHash { get; set; }
-        public int UserProfileId { get; set; }
+        public int UserPhotoId { get; set; }      
 
         public virtual ICollection<Role> UserRoles{ get; set; }
 

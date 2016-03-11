@@ -24,6 +24,5 @@ namespace Epam.Wunderlist.Models
 
         public int ToDoItemListId { get; set; }
 
-        public virtual ICollection<Comment> CommentsList{ get; set; }
     }
 }

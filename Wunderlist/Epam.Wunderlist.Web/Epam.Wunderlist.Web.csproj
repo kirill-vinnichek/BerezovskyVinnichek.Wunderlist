@@ -263,7 +263,7 @@
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
       <Name>Epam.Wunderlist.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.Service\Epam.Wunderlist.Services.csproj">
+    <ProjectReference Include="..\Epam.Wunderlist.Services\Epam.Wunderlist.Services.csproj">
       <Project>{816623ae-1bc8-4577-96b0-d698fde81975}</Project>
       <Name>Epam.Wunderlist.Services</Name>
     </ProjectReference>

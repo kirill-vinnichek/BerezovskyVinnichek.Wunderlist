@@ -10,8 +10,6 @@ namespace Epam.Wunderlist.Models
     {
         public int Id { get;protected set; }
 
-        public byte[] PictureData { get; set; }
-
-        public string PictureMimeType { get; set; }
+        public string Name { get; set; }
     }
 }
