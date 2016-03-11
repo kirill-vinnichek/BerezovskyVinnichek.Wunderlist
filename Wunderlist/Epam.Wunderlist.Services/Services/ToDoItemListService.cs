@@ -49,28 +49,28 @@ namespace Epam.Wunderlist.Services.Services
             return _repository.GetById(id);
         }
 
-        public void ChangeItemsOrder(int id, int newNumberInList)
-        {
-            var item = _toDoItemService.GetById(id);
-            var itemList = GetById(item.ToDoItemListId);
-            var list = itemList.ToDoItemsList.OrderBy(t => t.NumberInList).ToList();
-            if (item.NumberInList < newNumberInList)
-            {
-                for (int i = item.NumberInList + 1; i < newNumberInList; i++)
-                {
-                    list[i].NumberInList = list[i-1].NumberInList;
-                }            
-            }
-            if (item.NumberInList > newNumberInList)
-            {
-                for (int i = item.NumberInList - 1; i > newNumberInList; i--)
-                {
-                    list[i].NumberInList = list[i + 1].NumberInList;
-                }
-            }
-            list[item.NumberInList].NumberInList = newNumberInList;
-            itemList.ToDoItemsList = list;
-            Update(itemList);
-        }
+        //public void ChangeItemsOrder(int id, int newNumberInList)
+        //{
+        //    var item = _toDoItemService.GetById(id);
+        //    var itemList = GetById(item.ToDoItemListId);
+        //    var list = itemList.ToDoItemsList.OrderBy(t => t.NumberInList).ToList();
+        //    if (item.NumberInList < newNumberInList)
+        //    {
+        //        for (int i = item.NumberInList + 1; i < newNumberInList; i++)
+        //        {
+        //            list[i].NumberInList = list[i-1].NumberInList;
+        //        }            
+        //    }
+        //    if (item.NumberInList > newNumberInList)
+        //    {
+        //        for (int i = item.NumberInList - 1; i > newNumberInList; i--)
+        //        {
+        //            list[i].NumberInList = list[i + 1].NumberInList;
+        //        }
+        //    }
+        //    list[item.NumberInList].NumberInList = newNumberInList;
+        //    itemList.ToDoItemsList = list;
+        //    Update(itemList);
+        //}
     }
 }

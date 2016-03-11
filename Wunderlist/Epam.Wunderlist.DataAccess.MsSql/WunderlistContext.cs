@@ -16,7 +16,6 @@ namespace Epam.Wunderlist.DataAccess.MsSql
         public DbSet<Role> Roles { get; set; }
         public DbSet<ToDoItem> ToDoItems { get; set; }
         public DbSet<Picture> Pictures { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<ToDoItemList> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
       
@@ -34,7 +33,6 @@ namespace Epam.Wunderlist.DataAccess.MsSql
             modelBuilder.Configurations.Add(new CommentConfiguration());
             modelBuilder.Configurations.Add(new ToDoItemConfiguration());
             modelBuilder.Configurations.Add(new ToDoItemListConfiguration());
-            modelBuilder.Configurations.Add(new UserProfileConfiguration());
         }
 
 

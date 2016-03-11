@@ -63,7 +63,6 @@
     <Compile Include="Configuration\ToDoItemConfiguration.cs" />
     <Compile Include="Configuration\ToDoItemListConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
-    <Compile Include="Configuration\UserProfileConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDatabaseFactory.cs" />

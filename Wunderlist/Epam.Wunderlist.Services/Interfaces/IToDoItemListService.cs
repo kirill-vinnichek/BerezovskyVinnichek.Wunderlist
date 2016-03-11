@@ -9,6 +9,6 @@ namespace Epam.Wunderlist.Services.Interfaces
         void Delete(ToDoItemList entity);
         void Delete(int id);
         ToDoItemList GetById(int id);       
-        void ChangeItemsOrder(int id, int newNumberInList);
+       // void ChangeItemsOrder(int id, int newNumberInList);
     }
 }
