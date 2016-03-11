@@ -1,20 +1,24 @@
-﻿var app = angular.module("app", [
+﻿var app = angular.module("webApp", [
    'ngRoute',
-   'controllers'
+   'angularModalService'
 ]);
 
 app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-        when('/phones', {
-            templateUrl: "partials/phone-list.html",
-            controller: "listController"
+        when('/lists/:listId', {
+            templateUrl: "partials/list.html",
+            controller: "listCtrl"
         }).
-        when("/phones/:phoneId", {
-            templateUrl: "partials/phone-details.html",
-            controller: "detailsController"
+        when("/tasks/:taskId", {
+            templateUrl: "partials/tastDetails.html",
+            controller: "taskCtrl"
+        }).
+        when('/search', {
+            templateUrl: "partials/search.html",
+            controller: "searchCtrl"
         }).
         otherwise({
-            redirectTo: '/phones'
+            redirectTo: '/lists/inbox'
         });
     }]);

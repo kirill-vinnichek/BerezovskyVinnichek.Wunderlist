@@ -8,7 +8,7 @@ namespace Epam.Wunderlist.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.IgnoreRoute("Home/WebApp");
             routes.MapRoute(
                 name: "WebApp",
                 url: "webapp",

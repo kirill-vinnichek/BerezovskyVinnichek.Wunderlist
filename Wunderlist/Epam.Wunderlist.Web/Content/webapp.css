@@ -104,6 +104,11 @@ input {
         flex: 1;
     }
 
+.user-dropdown .dropdown-menu {
+    left:5px;
+    top: inherit;
+}
+
 .user-arrow {
     color: #737272;
 }
@@ -165,7 +170,7 @@ input {
     display: flex;
     flex-direction: column;
     flex: 1;
-    overflow:hidden;
+    overflow: hidden;
 }
 
     .tasks .list-toolbar {
