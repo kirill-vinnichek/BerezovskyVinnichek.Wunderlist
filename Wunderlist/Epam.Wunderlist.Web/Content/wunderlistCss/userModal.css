@@ -22,11 +22,7 @@
         overflow: auto;
     }
 
-        .user-modal .user-tabs ul {
-            margin: 0px;
-            padding: 0px;
-            list-style: none;
-        }
+       
 
 
     .user-modal .account {
@@ -52,4 +48,8 @@
 .user-modal .account .account-settings {
     display: flex;
     flex-direction: column;
+}
+
+.modal {
+display: block;
 }

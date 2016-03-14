@@ -14,6 +14,12 @@ namespace Epam.Wunderlist.Web
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "TaskRoute",
+                routeTemplate: "api/itemList/{taskListId}/task/{taskId}",
+                defaults: new { controller = "Item", taskId = RouteParameter.Optional }
+                );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

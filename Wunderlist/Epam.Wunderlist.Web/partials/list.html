@@ -1,13 +1,38 @@
-﻿<div class="tasks-main">
+﻿<div class="tasks-main" ng-show="!taskList.is404">
     <div class="add-task">
-        <a><span class="glyphicon glyphicon-plus"></span></a>
-        <input class="add-task-input" type="text" placeholder="Добавить задачу..." />
+        <a ng-click="taskList.addTask(TaskName)"><span class="glyphicon glyphicon-plus"></span></a>
+        <input class="add-task-input" ng-model="TaskName" wl-enter="taskList.addTask(TaskName)" type="text" placeholder="Добавить задачу..." />
     </div>
-    <div class="task-list"></div>
+    <div class="task-list">
+        <ul>
+            <li ng-repeat="task in taskList.list.unfinishedTasks">
+                <div class="task-item">
+                    <a class="task-checkbox">
+                        <span class="glyphicon glyphicon-unchecked"></span>
+                        <span class="glyphicon glyphicon-check hidden"></span>
+                    </a>
+                    <span class="task-title" ng-bind="task.Name"></span>
+                    <span class="task-date" ng-bind="task.Date"></span>
+                    <a class="task-mark">
+                        <span class="glyphicon glyphicon-ice-lolly"></span>
+                        <span class="glyphicon glyphicon-ice-lolly-tasted"></span>
+                    </a>
+                </div>
+               
+            </li>
+        </ul>
+
+
+    </div>
     <h4 class="show-completed">
         <a>
             Показать завершенные задачи
         </a>
     </h4>
     <div class="task-list"></div>
+   
+</div>
+<div class="task-404"ng-show="taskList.is404">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <h3>Не удается найти список.</h3>
 </div>

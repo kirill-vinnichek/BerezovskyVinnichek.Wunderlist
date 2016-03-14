@@ -6,6 +6,8 @@ using Epam.Wunderlist.Web.Models;
 using Epam.Wunderlist.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Epam.Wunderlist.Models;
+using AutoMapper;
 
 namespace Epam.Wunderlist.Web.Controllers
 {
@@ -14,12 +16,16 @@ namespace Epam.Wunderlist.Web.Controllers
     public class AccountController : Controller
     {
 
+        private readonly IImageService _imageService;
+        private readonly IToDoItemListService _itemListService;
         private readonly IUserService _userService;
-        private readonly UserManager<OwinUser,int> _userManager;
+        private readonly UserManager<OwinUser, int> _userManager;
 
-        public AccountController(IUserService userService,UserManager<OwinUser,int> userManager)
+        public AccountController(IUserService userService, IImageService imageService, IToDoItemListService itemListService, UserManager<OwinUser, int> userManager)
         {
             this._userService = userService;
+            _imageService = imageService;
+            _itemListService = itemListService;
             this._userManager = userManager;
         }
 
@@ -43,7 +49,7 @@ namespace Epam.Wunderlist.Web.Controllers
                 {
                     await SignInAsync(user, true);
                     //TODO:  Change To Profile
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("WebApp", "Home");
                 }
                 else
                 {
@@ -68,13 +74,21 @@ namespace Epam.Wunderlist.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new OwinUser() { UserName = viewModel.UserName,Email = viewModel.Email };
-               
+                var user = new OwinUser() { UserName = viewModel.UserName, Email = viewModel.Email };
                 var result = await _userManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
+                    var u = _userService.GetByEmail(viewModel.Email);
+                    //TODO: Refactor Setting(move from here!)
+                    var itemsList = new ToDoItemList() { Name = "Inbox", UserId = u.Id };
+                    _itemListService.Add(itemsList);
+                    var avatar = new Picture() { Name = "default" };
+                    _imageService.Add(avatar);
+                    u.UserPhotoId = avatar.Id;
+                    _userService.Update(u);
+                    user = Mapper.Map<OwinUser>(u);
                     await SignInAsync(user, true);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("WebApp", "Home");
                 }
                 else
                 {

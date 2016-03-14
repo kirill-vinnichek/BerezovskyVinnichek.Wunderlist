@@ -9,7 +9,7 @@ namespace Epam.Wunderlist.DataAccess.MsSql
     {       
         public WunderlistContext() : base("WunderlistConnection")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<WunderlistContext>());
+            Database.SetInitializer(new WunderlistDbInitialize());
         }
 
         public DbSet<User> Users { get; set; }

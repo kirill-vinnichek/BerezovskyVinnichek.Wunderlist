@@ -24,13 +24,13 @@
                     <a class="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                 </div>
                 <div id="user-toolbar">
-                    <div class="user-dropdown">
-                        <a class="user dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span class="user-avatar"><img src="~/Content/imgs/av_demo.png" /></span>
+                    <div class="user-dropdown" uib-dropdown>
+                        <a class="user" uib-dropdown-toggle aria-haspopup="true" aria-expanded="true">
+                            <span class="user-avatar"><img ng-src="{{user.UserPhotoUrl}}" /></span>
                             <span class="user-name" ng-bind="user.UserName"></span>
                             <span class="user-arrow glyphicon glyphicon-chevron-down"></span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <ul uib-dropdown-menu aria-labelledby="dropdownMenu1">
                             <li class="dropdown-header">User menu</li>
                             <li role="separator" class="divider"></li>
                             <li><a ng-click="main.openUserModal()">User profile</a></li>
@@ -45,10 +45,21 @@
                     </div>
                 </div>
                 <div id="lists">
-                    <ul class="list-collection"></ul>
+                    <ul class="filter-collection"></ul>
+                    <ul class="list-collection">
+                        <li ng-repeat="taskList in user.taskLists">
+                            <a ng-href="#/lists/{{taskList.Id}}" ng-dblclick="main.openChangeListModal(taskList)">
+                                <span class="glyphicon glyphicon-th-list list-icon"></span>
+                                <span class="title" ng-bind="taskList.Name"></span>
+                                <span class="count" ng-bind="taskList.Count"></span>
+                                <span class="glyphicon glyphicon-trash list-options" ng-click="main.deleteTaskList(taskList.Id)"></span>
+                                <span class="glyphicon glyphicon-pencil list-options" ng-click="main.openChangeListModal(taskList)"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="sidebar-actions">
-                    <a class="add-list">
+                    <a class="add-list" ng-click="main.openCreateListModal()">
                         <span class="glyphicon glyphicon-plus"></span>
                         <span>Создать список</span>
                     </a>
@@ -75,9 +86,12 @@
                 </div>
             </div>
             <div ng-view></div>
-
         </div>
     </div>
+
+   
+
+
 
     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
     {
@@ -88,7 +102,7 @@
 
     @Scripts.Render("~/script/jquery")
     @Scripts.Render("~/script/jqueryval")
-    @Scripts.Render("~/script/bootstrap")
+    @Scripts.Render("~/script/respond")
     @Scripts.Render("~/script/angular")
     @Scripts.Render("~/script/webapp")
     <script>

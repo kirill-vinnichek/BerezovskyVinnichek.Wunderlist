@@ -13,11 +13,12 @@ namespace Epam.Wunderlist.Services.Services
 
         public UserService(IUnitOfWork uoW, IUserRepository rep)
         {
-            this._repository = rep;
-            this._unitOfWork = uoW;
+            _repository = rep;
+            _unitOfWork = uoW;
         }
-        public void Add(User entity)
+        public void Create(User entity)
         {
+            entity.UserPhotoId = 1;
             _repository.Add(entity);
             _unitOfWork.Commit();
         }

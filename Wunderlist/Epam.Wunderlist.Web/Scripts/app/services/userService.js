@@ -8,4 +8,10 @@ app.service("userService", ["$http", "$q", function ($http, $q) {
         return p;
     };
 
+    this.updateUser = function (user) {
+        var p = $http.post('api/user',user).success(function (response) {
+            return response;
+        });
+        return p;
+    };
 }]);

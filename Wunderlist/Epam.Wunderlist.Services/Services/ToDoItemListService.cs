@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Epam.Wunderlist.DataAccess.Interfaces;
 using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
 using Epam.Wunderlist.Models;
@@ -33,9 +35,7 @@ namespace Epam.Wunderlist.Services.Services
 
         public void Delete(ToDoItemList entity)
         {
-            var category = GetById(entity.Id);
-            _repository.Delete(category);
-            _unitOfWork.Commit();
+            Delete(entity.Id);
         }
 
         public void Delete(int id)
@@ -44,9 +44,15 @@ namespace Epam.Wunderlist.Services.Services
             _unitOfWork.Commit();
         }
 
-        public ToDoItemList GetById(int id)
+        public ToDoItemList GetById(int userId,int id)
         {
-            return _repository.GetById(id);
+            var taskList =_repository.GetById(id);
+            return taskList.UserId == userId ? taskList : null;
+        }
+
+        public IEnumerable<ToDoItemList> GetAll(int userId)
+        {
+            return _repository.GetMany(i => i.UserId == userId);
         }
 
         //public void ChangeItemsOrder(int id, int newNumberInList)

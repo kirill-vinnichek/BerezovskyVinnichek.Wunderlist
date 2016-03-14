@@ -1,6 +1,8 @@
 ﻿var app = angular.module("webApp", [
    'ngRoute',
-   'angularModalService'
+   'ngAnimate',
+   'ui.bootstrap',
+   'ngFileUpload'
 ]);
 
 app.config(['$routeProvider',
@@ -8,7 +10,8 @@ app.config(['$routeProvider',
         $routeProvider.
         when('/lists/:listId', {
             templateUrl: "partials/list.html",
-            controller: "listCtrl"
+            controller: "taskListCtrl",
+            controllerAs :"taskList"
         }).
         when("/tasks/:taskId", {
             templateUrl: "partials/tastDetails.html",

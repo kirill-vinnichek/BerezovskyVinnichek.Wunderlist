@@ -1,4 +1,7 @@
-﻿using Epam.Wunderlist.Services.Interfaces;
+﻿using AutoMapper;
+using Epam.Wunderlist.Models;
+using Epam.Wunderlist.Services.Interfaces;
+using Epam.Wunderlist.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,19 +15,24 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
     public class UserController : ApiController
     {
         private IUserService _userService;
+        private IImageService _imageService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IImageService imageService)
         {
             _userService = userService;
+            _imageService = imageService;
         }
 
-
+        [HttpGet]
         // GET api/<controller>
         public IHttpActionResult Get()
         {
-            var user = _userService.GetById(User.Identity.GetUserId<int>());
+            var user =Mapper.Map<UserInfo>(_userService.GetById(User.Identity.GetUserId<int>()));
             if (user != null)
+            {
+                user.UserPhotoUrl = _imageService.GetImage(user.UserPhotoId)?.Url;
                 return Ok(user);
+            }
             return NotFound();
         }
 
@@ -34,9 +42,15 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             return "value";
         }
 
+        [HttpPost]
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody] UserInfo user)
         {
+            if (ModelState.IsValid)
+            {
+                _userService.Update(Mapper.Map<User>(user));
+            }
+            return Ok();
         }
 
         // PUT api/<controller>/5

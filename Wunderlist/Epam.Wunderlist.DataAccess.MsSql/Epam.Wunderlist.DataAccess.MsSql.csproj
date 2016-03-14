@@ -76,6 +76,7 @@
     <Compile Include="Repositories\ToDoItemRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="WunderlistContext.cs" />
+    <Compile Include="WunderlistDbInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epam.Wunderlist.DataAccess.Interfaces\Epam.Wunderlist.DataAccess.Interfaces.csproj">

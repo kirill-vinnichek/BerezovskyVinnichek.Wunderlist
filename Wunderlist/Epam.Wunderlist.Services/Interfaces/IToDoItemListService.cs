@@ -1,4 +1,5 @@
 ﻿using Epam.Wunderlist.Models;
+using System.Collections.Generic;
 
 namespace Epam.Wunderlist.Services.Interfaces
 {
@@ -8,7 +9,8 @@ namespace Epam.Wunderlist.Services.Interfaces
         void Update(ToDoItemList entity);
         void Delete(ToDoItemList entity);
         void Delete(int id);
-        ToDoItemList GetById(int id);       
-       // void ChangeItemsOrder(int id, int newNumberInList);
+        ToDoItemList GetById(int userId,int id);
+        IEnumerable<ToDoItemList> GetAll(int userId);       
+        // void ChangeItemsOrder(int id, int newNumberInList);
     }
 }
