@@ -200,6 +200,7 @@
     <Compile Include="Controllers\WebApi\ImageController.cs" />
     <Compile Include="Controllers\WebApi\ItemController.cs" />
     <Compile Include="Controllers\WebApi\ItemListController.cs" />
+    <Compile Include="Controllers\WebApi\OrderController.cs" />
     <Compile Include="Controllers\WebApi\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,6 +216,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ToDoItemListViewModel.cs" />
     <Compile Include="ViewModels\ToDoItemViewModel.cs" />
     <Compile Include="ViewModels\UserInfo.cs" />
@@ -237,6 +239,7 @@
     <Content Include="Content\wunderlistCss\webapp.css" />
     <Content Include="partials\modals\changeListModal.html" />
     <Content Include="partials\modals\createListModal.html" />
+    <Content Include="partials\taskDetails.html" />
     <Content Include="partials\modals\userModa.html" />
     <Content Include="Scripts\angular_lib\angular-animate.js" />
     <Content Include="Scripts\angular_lib\angular-animate.min.js" />
@@ -244,9 +247,11 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular_lib\angular-dragdrop.min.js" />
     <Content Include="Scripts\angular_lib\angular-resource.js" />
     <Content Include="Scripts\angular_lib\angular-resource.min.js" />
     <Content Include="Scripts\angular_lib\angular-mocks.js" />
+    <Content Include="Scripts\angular_lib\angular-route-segment.min.js" />
     <Content Include="Scripts\angular_lib\angular-route.js" />
     <Content Include="Scripts\angular_lib\angular-route.min.js" />
     <Content Include="Scripts\angular_lib\angular.js" />
@@ -274,6 +279,7 @@
     <Content Include="partials\list.html" />
     <Content Include="Scripts\app\controllers\userController.js" />
     <Content Include="Scripts\app\derectives\rigthClickDerective.js" />
+    <Content Include="Scripts\app\derectives\wlDateDerective.js" />
     <Content Include="Scripts\app\derectives\wlEnterDerective.js" />
     <Content Include="Scripts\app\services\taskListService.js" />
     <Content Include="Scripts\app\services\taskService.js" />
@@ -289,6 +295,7 @@
     <Content Include="Scripts\jquery\jquery.validate.min.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js_libs\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-file-upload-all.js" />
     <Content Include="Scripts\ng-file-upload-all.min.js" />

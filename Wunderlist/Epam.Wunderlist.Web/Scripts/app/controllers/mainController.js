@@ -1,6 +1,6 @@
 ﻿var app = angular.module('webApp');
 
-app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListService", "$log", function ($scope, $uibModal, userService, taskListService, $log) {
+app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListService", "taskService", "$log", function ($scope, $uibModal, userService, taskListService, taskService, $log) {
     var self = this;
 
     userService.getUser().then(function (response) {
@@ -10,14 +10,20 @@ app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListServi
         });
     });
 
-
     self.deleteTaskList = function (listId) {
-        taskListService.deleteTaskList(listId).then(function() {
-            $scope.user.taskLists.splice($scope.user.taskLists.indexOf($scope.user.taskLists.find(el => el.Id === listId)), 1);
+        taskListService.deleteTaskList(listId).then(function () {
+            _.remove($scope.user.taskLists, function (el) {
+                return el.Id === listId
+            });
         });
     }
 
-
+    self.onDropComplete = function (index, data, event) {
+        data.ToDoItemListId = $scope.user.taskLists[index].Id;
+        taskService.updateTask(data).success(function (task) {
+            data = task;
+        });
+    }
 
     self.openUserModal = function () {
         var userModal = $uibModal.open({
@@ -48,11 +54,6 @@ app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListServi
             backdrop: 'static',
             scope: $scope,
             appendTo: $(".wrapper"),
-            //resolve: {
-            //    listId: function () {
-            //        return id;
-            //    }
-            //}
         });
 
         createListModal.result.then(function (TaskList) {

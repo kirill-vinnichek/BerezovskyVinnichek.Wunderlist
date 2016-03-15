@@ -28,13 +28,21 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
         public IHttpActionResult Get(int taskListId)
         {
             var userId = User.Identity.GetUserId<int>();
-            var unfinishedTasks = _taskService.GetInStatus(userId,taskListId, ToDoItemStatus.Unfinished);
-            var completedTasks = _taskService.GetInStatus(userId,taskListId, ToDoItemStatus.Сompleted);
+            var unfinishedTasks = _taskService.GetInStatus(userId, taskListId, ToDoItemStatus.Unfinished).OrderBy(x=>x.NumberInList);
+            var completedTasks = _taskService.GetInStatus(userId, taskListId, ToDoItemStatus.Сompleted).OrderBy(x => x.NumberInList);
             return Ok(new { unfinishedTasks = unfinishedTasks, completedTasks = completedTasks });
         }
 
         // GET api/<controller>/5
-      
+        public IHttpActionResult GetTask(int taskListId, int taskId)
+        {
+            var userId = User.Identity.GetUserId<int>();
+            var task = _taskService.GetById(userId, taskId);
+            if (task != null)
+                return Ok(Mapper.Map<ToDoItemViewModel>(task));
+            else
+                return NotFound();
+        }
 
         // POST api/<controller>
         public IHttpActionResult Post([FromBody] ToDoItemViewModel task)
@@ -55,13 +63,32 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, [FromBody] ToDoItemViewModel task)
         {
+            try
+            {
+                _taskService.Update(Mapper.Map<ToDoItem>(task));
+                return Ok(task);
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            try
+            {
+                _taskService.Delete(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
     }
 }

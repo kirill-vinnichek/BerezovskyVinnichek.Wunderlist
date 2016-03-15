@@ -12,9 +12,7 @@ app.service("taskListService", ["$http", "$q", function ($http, $q) {
 
     this.getTaskList = function (id) {
 
-        return $http.get('api/itemList/' + id).success(function (response) {
-            return response.data;
-        });
+        return $http.get('api/itemList/' + id);
     };
 
     this.createTaskList = function (itemList) {
@@ -37,6 +35,10 @@ app.service("taskListService", ["$http", "$q", function ($http, $q) {
         });
         return p;
     }
+
+    this.updateTasksOrder = function (order) {
+        return $http.put('api/order', order);
+    };
 
 
 }]);

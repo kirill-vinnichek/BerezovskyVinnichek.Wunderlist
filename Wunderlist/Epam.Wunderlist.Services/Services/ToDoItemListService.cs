@@ -16,9 +16,9 @@ namespace Epam.Wunderlist.Services.Services
 
         public ToDoItemListService(IUnitOfWork uoW, IToDoItemListRepository rep, IToDoItemService itemService)
         {
-            this._repository = rep;
-            this._unitOfWork = uoW;
-            this._toDoItemService = itemService;
+            _repository = rep;
+            _unitOfWork = uoW;
+            _toDoItemService = itemService;
         }
 
         public void Add(ToDoItemList entity)
@@ -47,7 +47,7 @@ namespace Epam.Wunderlist.Services.Services
         public ToDoItemList GetById(int userId,int id)
         {
             var taskList =_repository.GetById(id);
-            return taskList.UserId == userId ? taskList : null;
+            return taskList?.UserId == userId ? taskList : null;
         }
 
         public IEnumerable<ToDoItemList> GetAll(int userId)

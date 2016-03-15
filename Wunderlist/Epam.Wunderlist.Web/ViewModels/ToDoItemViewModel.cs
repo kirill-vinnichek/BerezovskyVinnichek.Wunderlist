@@ -14,7 +14,7 @@ namespace Epam.Wunderlist.Web.ViewModels
         public string Text { get; set; }
 
         public DateTime? Date { get; set; }
-
+        public DateTime? DateCompleted { get; set; }
         public ToDoItemStatus CurrentState { get; set; }
 
         public int NumberInList { get; set; }

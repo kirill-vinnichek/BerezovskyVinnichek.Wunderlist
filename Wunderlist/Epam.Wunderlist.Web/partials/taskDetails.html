@@ -1,0 +1,55 @@
+﻿<div class="task-details">
+    <div class="inner ng-show=" ng-show="!task.is404">
+        <div class="top">
+            <a class="task-checkbox">
+                <span class="glyphicon glyphicon-unchecked" ng-show="!task.item.isCompleted" ng-click="task.completeTask(true)"></span>
+                <span class="glyphicon glyphicon-check" ng-show="task.item.isCompleted" ng-click="task.completeTask(false)"></span>
+            </a>
+            <div class="task-title">
+                <input type="text" ng-model="task.item.Name" />
+            </div>
+            <a class="task-mark">
+                <span class="glyphicon glyphicon-ice-lolly" ng-show="!task.item.IsMarked" ng-click="task.markTask(true)"></span>
+                <span class="glyphicon glyphicon-ice-lolly-tasted" style="color:blue" ng-show="task.item.IsMarked" ng-click="task.markTask(false)"></span>
+            </a>
+        </div>
+        <div class="body">
+            <div class="section task-date">
+                <div class="section-icon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+                <div class="section-content">
+                    <div class="section-title">
+                        <input type="date" ng-model="task.item.Date" placeholder="Задать дату выполнения..."/>
+                    </div>
+                </div>
+            </div>
+            <div class="section task-note">
+                <div class="section-icon">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+                <div class="section-content">
+                    <div class="section-title">
+                        <input placeholder="Добавить заметку…" ng-model="task.item.Text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <a class="detail-close" ng-click="task.close()">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+            <div class="details-info">
+                <span>ty,Buht!</span>
+            </div>
+            <a class="details-detele" ng-click="task.deleteTask()">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </div>
+    </div>
+    <div class="task-404" ng-show="task.is404">
+        <span class="glyphicon glyphicon-exclamation-sign"></span>
+        <h3>Не удается найти список.</h3>
+    </div>
+</div>
+

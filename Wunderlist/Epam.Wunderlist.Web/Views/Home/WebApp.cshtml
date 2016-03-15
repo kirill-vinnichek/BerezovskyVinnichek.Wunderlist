@@ -47,7 +47,7 @@
                 <div id="lists">
                     <ul class="filter-collection"></ul>
                     <ul class="list-collection">
-                        <li ng-repeat="taskList in user.taskLists">
+                        <li ng-repeat="taskList in user.taskLists" ng-drop="true"ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
                             <a ng-href="#/lists/{{taskList.Id}}" ng-dblclick="main.openChangeListModal(taskList)">
                                 <span class="glyphicon glyphicon-th-list list-icon"></span>
                                 <span class="title" ng-bind="taskList.Name"></span>
@@ -68,28 +68,13 @@
             </div>
         </div>
         <div class="tasks">
-            <div class="list-toolbar">
-                <h3 class="title">Фильмы</h3>
-                <div class="actionBar">
-                    <a>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <span>Поделиться</span>
-                    </a>
-                    <a>
-                        <span class="glyphicon glyphicon-sort"></span>
-                        <span>Сортировка</span>
-                    </a>
-                    <a>
-                        <span class="glyphicon glyphicon-option-horizontal"></span>
-                        <span>Еще</span>
-                    </a>
-                </div>
-            </div>
-            <div ng-view></div>
+           
+            <div app-view-segment="0"></div>
         </div>
+        <div app-view-segment="1"></div>
     </div>
 
-   
+
 
 
 
@@ -102,6 +87,7 @@
 
     @Scripts.Render("~/script/jquery")
     @Scripts.Render("~/script/jqueryval")
+    @Scripts.Render("~/script/jslibs")
     @Scripts.Render("~/script/respond")
     @Scripts.Render("~/script/angular")
     @Scripts.Render("~/script/webapp")

@@ -11,7 +11,7 @@ namespace Epam.Wunderlist.Web
             routes.IgnoreRoute("Home/WebApp");
             routes.MapRoute(
                 name: "WebApp",
-                url: "webapp",
+                url: "",
                 defaults: new { controller = "Home", action = "WebApp" }
                 );
 

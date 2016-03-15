@@ -29,7 +29,7 @@ namespace Epam.Wunderlist.Services.Services
         {
             //TODO: Выкидывать Exception т.к. не свою обновляешь
             var task = _repository.GetById(id);
-            if (task.UserId == userId)
+            if (task?.UserId == userId)
             {
                 task.CurrentState = state;
                 Update(task);
@@ -55,7 +55,7 @@ namespace Epam.Wunderlist.Services.Services
         public ToDoItem GetById(int userId, int id)
         {
             var task = _repository.GetById(id);
-            return task.UserId == userId ? task : null;
+            return task?.UserId == userId ? task : null;
         }
 
 

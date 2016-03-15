@@ -1,38 +1,79 @@
-﻿<div class="tasks-main" ng-show="!taskList.is404">
+﻿<div class="list-toolbar">
+    <h3 class="title" ng-bind="taskList.list.Name"></h3>
+    <div class="actionBar">
+        <a>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>Поделиться</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-sort"></span>
+            <span>Сортировка</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+            <span>Еще</span>
+        </a>
+    </div>
+</div>
+
+<div class="tasks-main" ng-show="!taskList.is404">
     <div class="add-task">
         <a ng-click="taskList.addTask(TaskName)"><span class="glyphicon glyphicon-plus"></span></a>
         <input class="add-task-input" ng-model="TaskName" wl-enter="taskList.addTask(TaskName)" type="text" placeholder="Добавить задачу..." />
     </div>
     <div class="task-list">
         <ul>
-            <li ng-repeat="task in taskList.list.unfinishedTasks">
-                <div class="task-item">
+            <li ng-repeat="task in taskList.list.unfinishedTasks" ng-drop="true" ng-drag="true" ng-drag-data="task" ng-drag-success="taskList.onDragComplete($data,$event)" ng-drop-success="taskList.onUnfinishedDropComplete($index, $data,$event)" ng-center-anchor="true" ng-class="{active: ('lists.taskDetails' | routeSegmentEqualsTo) && ('taskId' | routeSegmentParam) == {{task.Id}}}">
+                <div class="task-item" ng-dblclick="taskList.showDetails(task.Id)">
                     <a class="task-checkbox">
-                        <span class="glyphicon glyphicon-unchecked"></span>
-                        <span class="glyphicon glyphicon-check hidden"></span>
+                        <span class="glyphicon glyphicon-unchecked" ng-click="taskList.completeTask(true,task)"></span>
                     </a>
                     <span class="task-title" ng-bind="task.Name"></span>
-                    <span class="task-date" ng-bind="task.Date"></span>
+                    <span class="task-date" wl-date="task.Date" locale="ru"></span>
+                    <a class="task-delete" ng-click="taskList.deleteTask(task)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
                     <a class="task-mark">
-                        <span class="glyphicon glyphicon-ice-lolly"></span>
-                        <span class="glyphicon glyphicon-ice-lolly-tasted"></span>
+                        <span class="glyphicon glyphicon-ice-lolly" ng-show="!task.IsMarked" ng-click="taskList.markTask(true,task)"></span>
+                        <span class="glyphicon glyphicon-ice-lolly-tasted" style="color:blue" ng-show="task.IsMarked" ng-click="taskList.markTask(false,task)"></span>
                     </a>
                 </div>
-               
             </li>
         </ul>
 
 
     </div>
-    <h4 class="show-completed">
+    <h4 class="show-completed" ng-click="showCompleted = !showCompleted">
         <a>
             Показать завершенные задачи
         </a>
     </h4>
-    <div class="task-list"></div>
-   
+    <div class="task-list done" ng-show="showCompleted">
+        <ul>
+            <li ng-repeat="task in taskList.list.completedTasks" ng-drop="true" ng-drag="true" ng-drag-data="task" ng-drag-success="taskList.onDragComplete($data,$event)" ng-drop-success="taskList.onCompletedDropComplete($index, $data,$event)" ng-center-anchor="true" ng-class="{active: ('lists.taskDetails' | routeSegmentEqualsTo) && ('taskId' | routeSegmentParam) == {{task.Id}}}">
+                <div class="task-item" ng-dblclick="taskList.showDetails(task.Id)">
+                    <a class="task-checkbox" ng-click="taskList.completeTask(false,task)">
+                        <span class="glyphicon glyphicon-check"></span>
+                    </a>
+                    <span class="task-title" ng-bind="task.Name"></span>
+                    <span class="task-dateCompleted" wl-date="task.DateCompleted" locale="ru"></span>
+                    <span class="task-date" ng-bind="task.Date"></span>
+                    <a class="task-delete" ng-click="taskList.deleteTask(task)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    <a class="task-mark">
+                        <span class="glyphicon glyphicon-ice-lolly" ng-show="!task.IsMarked" ng-click="taskList.markTask(true,task)"></span>
+                        <span class="glyphicon glyphicon-ice-lolly-tasted" style="color:blue" ng-show="task.IsMarked" ng-click="taskList.markTask(false,task)"></span>
+                    </a>
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+
 </div>
-<div class="task-404"ng-show="taskList.is404">
+<div class="task-404" ng-show="taskList.is404">
     <span class="glyphicon glyphicon-exclamation-sign"></span>
     <h3>Не удается найти список.</h3>
 </div>
