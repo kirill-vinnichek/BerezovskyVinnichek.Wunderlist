@@ -18,17 +18,29 @@ namespace Epam.Wunderlist.Services.Services
         private ICloudStorage _cloudStorage;
         private IPictureRepository _pictureRepository;
         private IUserService _userService;
-        public ImageService(IUnitOfWork uow, ICloudStorage cloudStorage, IPictureRepository pictureRepository,IUserService userService)
+        private readonly ILoggerService _loggerService;
+        public ImageService(IUnitOfWork uow, ICloudStorage cloudStorage, IPictureRepository pictureRepository,IUserService userService, ILoggerService logger)
         {
             _uow = uow;
             _cloudStorage = cloudStorage;
             _pictureRepository = pictureRepository;
             _userService = userService;
+            _loggerService = logger;
         }
         public void Add(Picture entity)
         {
-            _pictureRepository.Add(entity);
-            _uow.Commit();
+            try
+            {
+                _loggerService.Trace("Add Picture started");
+                _pictureRepository.Add(entity);
+                _uow.Commit();
+                _loggerService.Trace("Add Picture finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
 
@@ -39,49 +51,104 @@ namespace Epam.Wunderlist.Services.Services
 
         public Image GetImage(int id)
         {
-            var picture = _pictureRepository.GetById(id);
-            if (picture != null)
+            try
             {
-                var url = _cloudStorage.GetUrl(picture.Name);
-                return new Image() { Url = url };
+                _loggerService.Trace("GetImage Picture started");
+                var picture = _pictureRepository.GetById(id);
+                if (picture != null)
+                {
+                    var url = _cloudStorage.GetUrl(picture.Name);
+                    return new Image() { Url = url };
+                }
+                return null;
             }
-            return null;
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public Image GetImage(string imgName)
         {
-            var url = _cloudStorage.GetUrl(imgName);
-            return new Image() { Url = url };
+            try
+            {
+                _loggerService.Trace("GetImage Picture started");
+                var url = _cloudStorage.GetUrl(imgName);
+                return new Image() { Url = url };
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public Image GetImage(int id, int width, int height)
         {
-            var picture = _pictureRepository.GetById(id);
-            if (picture != null)
+            try
             {
-                var url = _cloudStorage.GetUrl(picture.Name, width, height);
-                return new Image() { Url = url,Id = id };
+                _loggerService.Trace("GetImage Picture started");
+                var picture = _pictureRepository.GetById(id);
+                if (picture != null)
+                {
+                    var url = _cloudStorage.GetUrl(picture.Name, width, height);
+                    return new Image() { Url = url, Id = id };
+                }
+                return null;
             }
-            return null;
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public bool StoreImage(Stream File)
         {
-            var imgName = Guid.NewGuid().ToString();
-            return StoreImage(imgName, File);
+            try
+            {
+                _loggerService.Trace("StoreImage Picture started");
+                var imgName = Guid.NewGuid().ToString();
+                return StoreImage(imgName, File);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public bool StoreImage(string imgName, Stream File)
         {
-            return _cloudStorage.UploadImage(imgName, File);
+            try
+            {
+                _loggerService.Trace("StoreImage Picture started");
+                return _cloudStorage.UploadImage(imgName, File);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void SetAvatar(int userId, Image image)
         {
-            var picture = _pictureRepository.GetById(_userService.GetById(userId).UserPhotoId);
-            picture.Name = image.Name;
-            _pictureRepository.Update(picture);
-            _uow.Commit();
+            try
+            {
+                _loggerService.Trace("StoreImage Picture started");
+                var picture = _pictureRepository.GetById(_userService.GetById(userId).UserPhotoId);
+                picture.Name = image.Name;
+                _pictureRepository.Update(picture);
+                _uow.Commit();
+                _loggerService.Trace("StoreImage Picture finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
     }
 }

@@ -13,46 +13,108 @@ namespace Epam.Wunderlist.Services.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IToDoItemListRepository _repository;
         private readonly IToDoItemService _toDoItemService;
+        private readonly ILoggerService _loggerService;
 
-        public ToDoItemListService(IUnitOfWork uoW, IToDoItemListRepository rep, IToDoItemService itemService)
+        public ToDoItemListService(IUnitOfWork uoW, IToDoItemListRepository rep, IToDoItemService itemService, ILoggerService logger)
         {
             _repository = rep;
             _unitOfWork = uoW;
             _toDoItemService = itemService;
+            _loggerService = logger;
         }
 
         public void Add(ToDoItemList entity)
         {
-            _repository.Add(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Add ToDoItemList started");
+                _repository.Add(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Add ToDoItemList finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void Update(ToDoItemList entity)
         {
-            _repository.Update(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Update ToDoItemList started");
+                _repository.Update(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Update ToDoItemList finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
         }
 
         public void Delete(ToDoItemList entity)
         {
-            Delete(entity.Id);
+            try
+            {
+                _loggerService.Trace("Delete ToDoItemList started");
+                Delete(entity.Id);
+                _loggerService.Trace("Delete ToDoItemList finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(c=>c.Id==id);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Delete ToDoItemList started");
+                _repository.Delete(c => c.Id == id);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Delete ToDoItemList finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public ToDoItemList GetById(int userId,int id)
         {
-            var taskList =_repository.GetById(id);
-            return taskList?.UserId == userId ? taskList : null;
+            try
+            {
+                _loggerService.Trace("GetById ToDoItemList started");
+                var taskList = _repository.GetById(id);
+                return taskList?.UserId == userId ? taskList : null;
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public IEnumerable<ToDoItemList> GetAll(int userId)
         {
-            return _repository.GetMany(i => i.UserId == userId);
+            try
+            {
+                _loggerService.Trace("GetAll ToDoItemLists started");
+                return _repository.GetMany(i => i.UserId == userId);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
         }
 
         //public void ChangeItemsOrder(int id, int newNumberInList)
