@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Epam.Wunderlist.Services.Interfaces;
 using Epam.Wunderlist.Services.Services;
 
 namespace Epam.Wunderlist.DependencyResolver.Modules

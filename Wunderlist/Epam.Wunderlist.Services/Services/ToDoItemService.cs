@@ -12,62 +12,145 @@ namespace Epam.Wunderlist.Services.Services
     {
         private readonly IToDoItemRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILoggerService _loggerService;
 
-        public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow)
+        public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow, ILoggerService logger)
         {
             _repository = rep;
             _unitOfWork = uow;
+            _loggerService = logger;
         }
 
         public void Add(ToDoItem entity)
         {
-            _repository.Add(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Add ToDoItem started");
+                _repository.Add(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Add ToDoItem finished");
+            }
+            catch(Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void ChangeStatus(int userId, int id, ToDoItemStatus state)
         {
-            //TODO: Выкидывать Exception т.к. не свою обновляешь
-            var task = _repository.GetById(id);
-            if (task?.UserId == userId)
+            try
             {
-                task.CurrentState = state;
-                Update(task);
+                //TODO: Выкидывать Exception т.к. не свою обновляешь
+                _loggerService.Trace("ChangeStatus ToDoItem started");
+                var task = _repository.GetById(id);
+                if (task?.UserId == userId)
+                {
+                    task.CurrentState = state;
+                    Update(task);
+                }
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
             }
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(t => t.Id == id);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Delete ToDoItem started");
+                _repository.Delete(t => t.Id == id);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void Delete(ToDoItem entity)
         {
-            Delete(entity.Id);
+            try
+            {
+                _loggerService.Trace("Delete ToDoItem started");
+                Delete(entity.Id);
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public IEnumerable<ToDoItem> GetAll(int userId, int taskListid)
         {
-            return _repository.GetMany(t => t.ToDoItemListId == taskListid).Where(t => t.UserId == userId);
+            try
+            {
+                _loggerService.Trace("GetAll ToDoItems started");
+                return _repository.GetMany(t => t.ToDoItemListId == taskListid).Where(t => t.UserId == userId);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public ToDoItem GetById(int userId, int id)
         {
-            var task = _repository.GetById(id);
-            return task?.UserId == userId ? task : null;
+            try
+            {
+                _loggerService.Trace("GetById ToDoItem started");
+                var task = _repository.GetById(id);
+                return task?.UserId == userId ? task : null;
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
         }
 
 
         public IEnumerable<ToDoItem> GetInStatus(int userId, int taskListid, ToDoItemStatus state)
         {
-            return _repository.GetMany(t => t.ToDoItemListId == taskListid && t.CurrentState == state).Where(t => t.UserId == userId);
+            try
+            {
+                _loggerService.Trace("GetInStatus ToDoItem started");
+                return _repository.GetMany(t => t.ToDoItemListId == taskListid && t.CurrentState == state).Where(t => t.UserId == userId);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
         }
 
         public void Update(ToDoItem entity)
         {
-            _repository.Update(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Update ToDoItem started");
+                _repository.Update(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Update ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
+
+
     }
 }
