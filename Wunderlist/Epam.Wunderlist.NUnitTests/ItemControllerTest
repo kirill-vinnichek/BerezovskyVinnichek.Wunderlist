@@ -1,0 +1,16 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+
+namespace Epam.Wunderlist.NUnitTests
+{
+    [TestFixture]
+    public class ItemControllerTest
+    {
+        [Test]
+        public void SortByPositiveSumTest()
+        {
+
+        }
+    }
+}
