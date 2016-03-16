@@ -11,33 +11,32 @@ using System.Web.Http;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
-    [Authorize]
-    public class MarkedFilterController : ApiController
+    public class SearchController : ApiController
     {
         private readonly IToDoItemListService _taskListService;
         private readonly IToDoItemService _taskService;
 
-        public MarkedFilterController(IToDoItemListService taskListService, IToDoItemService taskService)
+        public SearchController(IToDoItemListService taskListService, IToDoItemService taskService)
         {
             _taskListService = taskListService;
             _taskService = taskService;
         }
 
-        public IHttpActionResult Get()
+        // GET api/<controller>/5
+        public IHttpActionResult Get(string id)
         {
             List<FilteredToDoItemList> markedToDoList = new List<FilteredToDoItemList>();
             var userId = User.Identity.GetUserId<int>();
-            var markedTasks = Mapper.Map<IEnumerable<ToDoItemViewModel>>(_taskService.GetMarked(userId));
+            var markedTasks = Mapper.Map<IEnumerable<ToDoItemViewModel>>(_taskService.Search(userId,id));
             var groupTasks = markedTasks.GroupBy(t => t.ToDoItemListId);
-            foreach(var grt in groupTasks)
+            foreach (var grt in groupTasks)
             {
-                var taskList = Mapper.Map<FilteredToDoItemList>(_taskListService.GetById(userId,grt.Key));
+                var taskList = Mapper.Map<FilteredToDoItemList>(_taskListService.GetById(userId, grt.Key));
                 taskList.TaskList = grt;
                 taskList.ItemsCount = grt.Count();
                 markedToDoList.Add(taskList);
             }
             return Ok(markedToDoList);
-        }
-        
+        }       
     }
 }

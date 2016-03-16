@@ -3,8 +3,9 @@
 app.controller("taskListFilterCtrl", ['$scope', '$routeSegment', '$location', 'filterService', 'taskService', function ($scope, $routeSegment, $location, filterService, taskService) {
 
     self = this;
-    self.is404 = false
+    self.is404 = false;
     self.Name = "Отмеченные";
+
     filterService.getMarked().success(function (data) {
         self.data = data;
         self.is404 = false;
@@ -22,8 +23,8 @@ app.controller("taskListFilterCtrl", ['$scope', '$routeSegment', '$location', 'f
         $location.url("lists/" + taskListId + "/tasks/" + taskId);
     };
 
-    self.completeTask = function (taskList,task) {
-        taskService.completeTask(false, task).success(function (data) {
+    self.completeTask = function (isComplete,taskList,task) {
+        taskService.completeTask(isComplete, task).success(function (data) {
             deleteFromList(taskList, task);
         });
     };
@@ -34,10 +35,17 @@ app.controller("taskListFilterCtrl", ['$scope', '$routeSegment', '$location', 'f
         });
     };
 
-    self.unmarkTask = function (taskList, task) {
-        taskService.markTask(false,task).success(function (data) {
+    self.markTask = function (isMark,taskList, task) {
+        taskService.markTask(isMark, task).success(function (data) {
             deleteFromList(taskList, task);
         });
     };
+
+    self.isComplete = function(currentState)
+    {
+        if (currentState === 1)
+            return false;
+        return true;
+    }
 
 }]);

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Epam.Wunderlist.Web.ViewModels
 {
-    public class MarkedToDoItemList
+    public class FilteredToDoItemList
     {
         public int Id { get; set; }
         public string Name { get; set; }

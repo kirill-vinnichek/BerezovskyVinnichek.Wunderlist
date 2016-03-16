@@ -19,9 +19,9 @@
             <div class="sidebar-inner">
                 <div id="search-toolbar">
                     <a class="toggle-menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
-                    <input class="search-input" />
-                    <a class="cancel-search"><span class="glyphicon glyphicon-remove hidden" aria-hidden="true"></span></a>
-                    <a class="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <input class="search-input" ng-model="main.searchString" wl-enter="main.showSearch(main.searchString)" />
+                    <a class="cancel-search" ng-click="main.canselSearch()" ng-class="{hidden: !('search' | routeSegmentEqualsTo)}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a class="search" ng-click="main.showSearch(main.searchString)" ng-class="{hidden: ('search' | routeSegmentEqualsTo)}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                 </div>
                 <div id="user-toolbar">
                     <div class="user-dropdown" uib-dropdown>

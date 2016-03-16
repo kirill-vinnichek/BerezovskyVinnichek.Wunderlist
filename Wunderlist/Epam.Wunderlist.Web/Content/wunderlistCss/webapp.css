@@ -346,7 +346,9 @@ input {
         height: 46px;
     }
 
+    .task-item.done{
 
+    }
 
     .task-list .task-checkbox span {
         color: grey;
@@ -373,15 +375,15 @@ input {
         text-overflow: ellipsis;
     }
 
-    .task-list.done {
+    .task-item.done {
         opacity: .6;
     }
 
-        .task-list.done .task-title {
+        .task-item.done .task-title {
             text-decoration: line-through;
         }
 
-        .task-list.done .task-dateCompleted {
+        .task-item.done .task-dateCompleted {
         }
 
 .task-delete span {

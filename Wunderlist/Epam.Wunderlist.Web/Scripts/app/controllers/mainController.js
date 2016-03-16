@@ -1,7 +1,8 @@
 ﻿var app = angular.module('webApp');
 
-app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListService", "taskService", "$log", function ($scope, $uibModal, userService, taskListService, taskService, $log) {
+app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListService", "taskService", '$location', "$log", function ($scope, $uibModal, userService, taskListService, taskService, $location, $log) {
     var self = this;
+    self.searchString = "";
 
     userService.getUser().then(function (response) {
         $scope.user = response.data;
@@ -24,6 +25,16 @@ app.controller("mainCtrl", ["$scope", "$uibModal", "userService", "taskListServi
             data = task;
         });
     }
+
+    self.showSearch = function (search) {
+        $location.url("search/" + search);
+    }
+
+    self.canselSearch = function () {
+        self.searchString = "";
+        $location.url("");
+    }
+
 
     self.openUserModal = function () {
         var userModal = $uibModal.open({
