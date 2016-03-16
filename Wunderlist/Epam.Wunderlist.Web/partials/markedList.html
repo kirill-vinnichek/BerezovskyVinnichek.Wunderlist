@@ -1,0 +1,50 @@
+﻿<div class="list-toolbar">
+    <h3 class="title" ng-bind="filter.Name"></h3>
+    <div class="actionBar">
+        <a>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>Поделиться</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-sort"></span>
+            <span>Сортировка</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+            <span>Еще</span>
+        </a>
+    </div>
+</div>
+
+<div class="tasks-main" ng-show="!filter.is404">
+    <ul>
+        <li ng-repeat="taskList in filter.data">
+            <h3 class="heading"><a ng-href="#/lists/{{taskList.Id}}" ng-bind="taskList.Name"></a></h3>
+            <div class="task-list">
+                <ul>
+                    <li ng-repeat="task in taskList.TaskList">
+                        <div class="task-item" ng-dblclick="filter.showDetails(taskList.Id,task.Id)">
+                            <a class="task-checkbox">
+                                <span class="glyphicon glyphicon-unchecked" ng-click="filter.completeTask(taskList,task)"></span>
+                            </a>
+                            <span class="task-title" ng-bind="task.Name"></span>
+                            <span class="task-date" wl-date="task.Date" locale="ru"></span>
+                            <a class="task-delete" ng-click="filter.deleteTask(taskList,task)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            <a class="task-mark">                                
+                                <span class="glyphicon glyphicon-ice-lolly-tasted" style="color:blue" ng-show="task.IsMarked" ng-click="filter.unmarkTask(taskList,task)"></span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+
+</div>
+<div class="task-404" ng-show="filter.is404">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <h3>Не удается найти список.</h3>
+</div>

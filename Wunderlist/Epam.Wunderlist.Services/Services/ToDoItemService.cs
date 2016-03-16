@@ -64,6 +64,11 @@ namespace Epam.Wunderlist.Services.Services
             return _repository.GetMany(t => t.ToDoItemListId == taskListid && t.CurrentState == state).Where(t => t.UserId == userId);
         }
 
+        public IEnumerable<ToDoItem> GetMarked(int userId)
+        {
+            return _repository.GetMany(t => t.UserId == userId && t.IsMarked && t.CurrentState == ToDoItemStatus.Unfinished);
+        }
+
         public void Update(ToDoItem entity)
         {
             _repository.Update(entity);

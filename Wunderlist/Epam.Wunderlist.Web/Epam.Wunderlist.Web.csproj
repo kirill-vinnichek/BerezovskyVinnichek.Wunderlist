@@ -200,6 +200,7 @@
     <Compile Include="Controllers\WebApi\ImageController.cs" />
     <Compile Include="Controllers\WebApi\ItemController.cs" />
     <Compile Include="Controllers\WebApi\ItemListController.cs" />
+    <Compile Include="Controllers\WebApi\MarkedFilterController.cs" />
     <Compile Include="Controllers\WebApi\OrderController.cs" />
     <Compile Include="Controllers\WebApi\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,6 +239,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\wunderlistCss\webapp.css" />
+    <Content Include="partials\markedList.html" />
     <Content Include="partials\modals\changeListModal.html" />
     <Content Include="partials\modals\createListModal.html" />
     <Content Include="partials\taskDetails.html" />
@@ -278,10 +280,12 @@
     <Content Include="Scripts\app\controllers\searchController.js" />
     <Content Include="Scripts\app\controllers\taskController.js" />
     <Content Include="partials\list.html" />
+    <Content Include="Scripts\app\controllers\taskListFilterController.js" />
     <Content Include="Scripts\app\controllers\userController.js" />
     <Content Include="Scripts\app\derectives\rigthClickDerective.js" />
     <Content Include="Scripts\app\derectives\wlDateDerective.js" />
     <Content Include="Scripts\app\derectives\wlEnterDerective.js" />
+    <Content Include="Scripts\app\services\filterService.js" />
     <Content Include="Scripts\app\services\taskListService.js" />
     <Content Include="Scripts\app\services\taskService.js" />
     <Content Include="Scripts\app\services\uploadService.js" />

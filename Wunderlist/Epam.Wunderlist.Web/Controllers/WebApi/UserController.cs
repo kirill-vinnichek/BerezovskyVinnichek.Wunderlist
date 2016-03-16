@@ -12,6 +12,7 @@ using System.Web.Http;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
+    [Authorize]
     public class UserController : ApiController
     {
         private IUserService _userService;

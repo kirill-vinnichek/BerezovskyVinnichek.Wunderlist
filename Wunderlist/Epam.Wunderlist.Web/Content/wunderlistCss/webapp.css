@@ -161,8 +161,8 @@ input {
     overflow-y: auto;
 }
 
-    #lists .filter-collection .list-icon{
-        font-size:24px;
+    #lists .filter-collection .list-icon {
+        font-size: 24px;
     }
 
 .lists-item.active {
@@ -272,6 +272,32 @@ input {
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
+
+    .tasks-main .heading {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        word-break: break-word;
+        font-size: 11px;
+        color: #fff;
+        position: relative;
+    }
+
+        .tasks-main .heading a {
+            background: rgba(102,137,100,0.75);
+            color: #fff;
+            padding: 3px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            line-height: 16px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
 
 .add-task {
     background: rgba(102,137,100,0.75);
@@ -509,4 +535,8 @@ input {
 
 .detail-close span:hover {
     color: forestgreen;
+}
+
+.details-detele span:hover {
+    color: firebrick;
 }

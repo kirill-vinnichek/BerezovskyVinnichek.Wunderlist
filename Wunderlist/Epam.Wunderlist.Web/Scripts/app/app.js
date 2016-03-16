@@ -12,9 +12,19 @@ app.config(['$routeSegmentProvider',
     function ($routeSegmentProvider) {
         $routeSegmentProvider.options.autoLoadTemplates = true;
         $routeSegmentProvider.
+        when('/filter/:filterName', 'filter').
         when('/lists/:listId', 'lists').
-        when('/lists/:listId/tasks/:taskId', 'lists.taskDetails').
+        when('/lists/:listId/tasks/:taskId', 'lists.taskDetails');
 
+        $routeSegmentProvider.
+            segment('filter', {
+                templateUrl: "partials/markedList.html",
+                controller: "taskListFilterCtrl",
+                controllerAs: "filter",
+                dependencies: ['filterName']
+            });;
+
+        $routeSegmentProvider.
         segment('lists', {
             templateUrl: "partials/list.html",
             controller: "taskListCtrl",
@@ -28,6 +38,8 @@ app.config(['$routeSegmentProvider',
             controllerAs: "task",
             dependencies: ['listId', 'taskId']
         });
+
+
     }]);
 
 

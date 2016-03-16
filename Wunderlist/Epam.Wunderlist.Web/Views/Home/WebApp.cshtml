@@ -46,8 +46,8 @@
                 </div>
                 <div id="lists">
                     <ul class="filter-collection">
-                        <li class="lists-item" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('listsF' | routeSegmentEqualsTo) && ('listName' | routeSegmentParam) == 'marked'}">
-                            <a ng-href="#/lists/marked" ng-dblclick="main.openChangeListModal(taskList)">
+                        <li class="lists-item" ng-class="{active: ('filter' | routeSegmentEqualsTo) && ('filterName' | routeSegmentParam) == 'marked'}">
+                            <a ng-href="#/filter/marked">
                                 <span class="glyphicon glyphicon-ice-lolly-tasted list-icon" style="color:blue"></span>
                                 <span class="title">Отмеченные</span>
                                 <span class="count" ng-bind="taskList.Count"></span>
