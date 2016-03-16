@@ -27,7 +27,7 @@ app.controller("taskCtrl", ['$scope', '$location', '$routeSegment', 'taskService
             self.item.isCompleted = false;
         else
             self.item.isCompleted = true;
-
+        self.item.Date= new Date(Date.parse(self.item.Date));
         self.is404 = false;
     }).error(function (http, status, fnc, httpObj) {
         self.is404 = true;

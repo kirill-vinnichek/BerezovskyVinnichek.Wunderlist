@@ -161,16 +161,17 @@ input {
     overflow-y: auto;
 }
 
-    #lists .list-collection {
+    #lists .filter-collection .list-icon{
+        font-size:24px;
     }
 
-.list-collection li.active {
+.lists-item.active {
     background: #e0eefa;
     color: #262626;
     text-shadow: 0 1px 1px rgba(0,0,0,0);
 }
 
-#lists .list-collection a {
+.lists-item a {
     display: flex;
     margin: 5px;
     align-items: center;
@@ -505,3 +506,7 @@ input {
         .task-details .bottom a {
             padding: 10px;
         }
+
+.detail-close span:hover {
+    color: forestgreen;
+}

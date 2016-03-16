@@ -45,9 +45,18 @@
                     </div>
                 </div>
                 <div id="lists">
-                    <ul class="filter-collection"></ul>
+                    <ul class="filter-collection">
+                        <li class="lists-item" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('listsF' | routeSegmentEqualsTo) && ('listName' | routeSegmentParam) == 'marked'}">
+                            <a ng-href="#/lists/marked" ng-dblclick="main.openChangeListModal(taskList)">
+                                <span class="glyphicon glyphicon-ice-lolly-tasted list-icon" style="color:blue"></span>
+                                <span class="title">Отмеченные</span>
+                                <span class="count" ng-bind="taskList.Count"></span>
+                            </a>
+                        </li>
+
+                    </ul>
                     <ul class="list-collection">
-                        <li ng-repeat="taskList in user.taskLists" ng-drop="true"ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
+                        <li class="lists-item" ng-repeat="taskList in user.taskLists" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
                             <a ng-href="#/lists/{{taskList.Id}}" ng-dblclick="main.openChangeListModal(taskList)">
                                 <span class="glyphicon glyphicon-th-list list-icon"></span>
                                 <span class="title" ng-bind="taskList.Name"></span>
@@ -68,7 +77,7 @@
             </div>
         </div>
         <div class="tasks">
-           
+
             <div app-view-segment="0"></div>
         </div>
         <div app-view-segment="1"></div>
