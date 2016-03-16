@@ -40,7 +40,7 @@ namespace Epam.Wunderlist.Web.Infrastructure
                 throw new ArgumentNullException("user");
            
             var u = Mapper.Map<User>(user);
-            return Task.Run(() => userService.Add(u));
+            return Task.Run(() => userService.Create(u));
 
         }
 

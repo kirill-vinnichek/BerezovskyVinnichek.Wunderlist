@@ -1,0 +1,52 @@
+﻿<div class="list-toolbar">
+    <h3 class="title" ng-bind="ctrl.Name"></h3>
+    <div class="actionBar">
+        <a>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>Поделиться</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-sort"></span>
+            <span>Сортировка</span>
+        </a>
+        <a>
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+            <span>Еще</span>
+        </a>
+    </div>
+</div>
+
+<div class="tasks-main" ng-show="!ctrl.is404">
+    <ul>
+        <li ng-repeat="taskList in ctrl.data">
+            <h3 class="heading"><a ng-href="#/lists/{{taskList.Id}}">{{taskList.Name}} - {{taskList.ItemsCount}}</a></h3>
+            <div class="task-list">
+                <ul>
+                    <li ng-repeat="task in taskList.TaskList">
+                        <div class="task-item" ng-class="{done: ctrl.isComplete(task.CurrentState)}" ng-dblclick="ctrl.showDetails(taskList.Id,task.Id)">
+                            <a class="task-checkbox">
+                                <span class="glyphicon glyphicon-unchecked" ng-show="!ctrl.isComplete(task.CurrentState)" ng-click="ctrl.completeTask(true,taskList,task)"></span>
+                                <span class="glyphicon glyphicon-check" ng-show="ctrl.isComplete(task.CurrentState)" ng-click="ctrl.completeTask(false,taskList,task)"></span>
+                            </a>
+                            <span class="task-title" ng-bind="task.Name"></span>
+                            <span class="task-date" wl-date="task.Date" locale="ru"></span>
+                            <a class="task-delete" ng-click="ctrl.deleteTask(taskList,task)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            <a class="task-mark">                                
+                                <span class="glyphicon glyphicon-ice-lolly" ng-show="!task.IsMarked" ng-click="ctrl.markTask(true,taskList,task)"></span>
+                                <span class="glyphicon glyphicon-ice-lolly-tasted" style="color:blue" ng-show="task.IsMarked" ng-click="ctrl.markTask(false,taskList,task)"></span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+
+</div>
+<div class="task-404" ng-show="ctrl.is404">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <h3>Не удается найти список.</h3>
+</div>

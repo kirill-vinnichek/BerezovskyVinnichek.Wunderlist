@@ -10,12 +10,13 @@ namespace Epam.Wunderlist.Models
     {
         
         public int Id { get;protected set; }
-
+        public int UserId { get; set; }
+        public string Name { get; set; }
         public string Text { get; set; }
 
         public DateTime? Date { get; set; }
 
-
+        public DateTime? DateCompleted { get; set; }
         public ToDoItemStatus CurrentState { get; set; }
 
         public int NumberInList { get; set; }
@@ -24,6 +25,5 @@ namespace Epam.Wunderlist.Models
 
         public int ToDoItemListId { get; set; }
 
-        public virtual ICollection<Comment> CommentsList{ get; set; }
     }
 }

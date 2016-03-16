@@ -48,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epam.Wunderlist.CloudStorage.Cloudinary\Epam.Wunderlist.CloudStorage.Cloudinary.csproj">
+      <Project>{c68d2463-587c-4fd0-8aec-1b7d0838d322}</Project>
+      <Name>Epam.Wunderlist.CloudStorage.Cloudinary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epam.Wunderlist.DataAccess.Interfaces\Epam.Wunderlist.DataAccess.Interfaces.csproj">
       <Project>{78aca394-2979-46c8-a9f7-52f5346b875e}</Project>
       <Name>Epam.Wunderlist.DataAccess.Interfaces</Name>

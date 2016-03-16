@@ -8,9 +8,8 @@ namespace Epam.Wunderlist.Models
 {
     public class ToDoItemList
     {
-        public int Id { get;protected set; }
-        public string Name { get; set;}
-        public virtual ICollection<ToDoItem> ToDoItemsList { get; set; }
-        public virtual ICollection<UserProfile>ProfilesList{ get; set; }
+        public int Id { get; protected set; }
+        public string Name { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -1,0 +1,18 @@
+﻿<div class="modal-content taskList-modal">
+    <div class="modal-header ">
+        <h3>Изменить список</h3>
+    </div>
+    <div class="modal-body">
+        <input class="form-control" placeholder="Название списка" ng-model="taskList.taskList.Name" />
+        <div class="user-info">
+            <span class="user-avatar"><img ng-src="{{user.UserPhotoUrl}}" /></span>
+            <div class="user-meta">
+                <span class="user-name" ng-bind="user.UserName"></span>
+                <span class="user-email" ng-bind="user.Email"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="taskList.submitChange()">Готово</button>
+    </div>
+</div>

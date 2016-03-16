@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Epam.Wunderlist.DataAccess.Interfaces;
 using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
 using Epam.Wunderlist.Models;
 using Epam.Wunderlist.Services.Interfaces;
+using System.Linq;
 
 namespace Epam.Wunderlist.Services.Services
 {
@@ -10,55 +12,156 @@ namespace Epam.Wunderlist.Services.Services
     {
         private readonly IToDoItemRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILoggerService _loggerService;
 
-        public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow)
+        public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow, ILoggerService logger)
         {
-            this._repository = rep;
-            this._unitOfWork = uow;
+            _repository = rep;
+            _unitOfWork = uow;
+            _loggerService = logger;
         }
 
         public void Add(ToDoItem entity)
         {
-            _repository.Add(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Add ToDoItem started");
+                _repository.Add(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Add ToDoItem finished");
+            }
+            catch(Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
-        public void ChangeStatus(int id, ToDoItemStatus status)
+        public void ChangeStatus(int userId, int id, ToDoItemStatus state)
         {
-            var task = GetById(id);
-            task.CurrentState = status;
-            Update(task);
+            try
+            {
+                //TODO: Выкидывать Exception т.к. не свою обновляешь
+                _loggerService.Trace("ChangeStatus ToDoItem started");
+                var task = _repository.GetById(id);
+                if (task?.UserId == userId)
+                {
+                    task.CurrentState = state;
+                    Update(task);
+                }
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(t=>t.Id==id);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Delete ToDoItem started");
+                _repository.Delete(t => t.Id == id);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
         public void Delete(ToDoItem entity)
         {
-            var toDoItem = GetById(entity.Id);
-            _repository.Delete(toDoItem);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Delete ToDoItem started");
+                Delete(entity.Id);
+                _loggerService.Trace("Delete ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
-        public IEnumerable<ToDoItem> GetAll(int id)
+        public IEnumerable<ToDoItem> GetAll(int userId, int taskListid)
         {
-            return _repository.GetMany(t => t.ToDoItemListId == id);
+            try
+            {
+                _loggerService.Trace("GetAll ToDoItems started");
+                return _repository.GetMany(t => t.ToDoItemListId == taskListid).Where(t => t.UserId == userId);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
 
-        public ToDoItem GetById(int id)
+        public ToDoItem GetById(int userId, int id)
         {
-            return _repository.GetById(id);
+            try
+            {
+                _loggerService.Trace("GetById ToDoItem started");
+                var task = _repository.GetById(id);
+                return task?.UserId == userId ? task : null;
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
         }
 
 
+        public IEnumerable<ToDoItem> GetInStatus(int userId, int taskListid, ToDoItemStatus state)
+        {
+            try
+            {
+                _loggerService.Trace("GetInStatus ToDoItem started");
+                return _repository.GetMany(t => t.ToDoItemListId == taskListid && t.CurrentState == state).Where(t => t.UserId == userId);
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
+
+        }
+
+        public IEnumerable<ToDoItem> GetMarked(int userId)
+        {
+            return _repository.GetMany(t => t.UserId == userId && t.IsMarked && t.CurrentState == ToDoItemStatus.Unfinished);
+        }
+
+        public IEnumerable<ToDoItem> Search(int userId, string search)
+        {
+            var s = search.ToLower();
+            return _repository.GetMany(t => t.UserId == userId && (t.Name.ToLower().Contains(s) || t.Text.ToLower().Contains(s)) && t.CurrentState == ToDoItemStatus.Unfinished);
+        }
 
         public void Update(ToDoItem entity)
         {
-            _repository.Update(entity);
-            _unitOfWork.Commit();
+            try
+            {
+                _loggerService.Trace("Update ToDoItem started");
+                _repository.Update(entity);
+                _unitOfWork.Commit();
+                _loggerService.Trace("Update ToDoItem finished");
+            }
+            catch (Exception exeption)
+            {
+                _loggerService.Error(exeption.Message);
+                throw;
+            }
         }
+
+
     }
 }

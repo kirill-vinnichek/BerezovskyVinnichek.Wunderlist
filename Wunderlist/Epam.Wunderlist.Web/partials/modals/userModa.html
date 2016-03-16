@@ -1,0 +1,77 @@
+﻿<div class="modal-body user-modal">
+    <div class="user-tabs">
+        <ul>
+            <li><a>Account</a></li>
+            <li><a>Something else</a></li>
+        </ul>
+    </div>
+    <div class="account">
+        <div class="account-header">
+            <a ngf-select="userModal.uploadFiles($file)"
+        accept="image/*" ngf-max-height="1000" ngf-max-size="1MB" ngf-resize="{width: 200, height: 200}">
+                <span class="avatar"><img ng-src="{{user.UserPhotoUrl}}"/></span>
+            </a>
+            <div class="info">
+                <h3>Бла-Бла-бла :D</h3>
+                <p>Вы можете назначать задачи коллегам и добавлять к ним файлы. Совместная работа еще никогда не была настолько простой!</p>
+            </div>
+        </div>
+        <hr />
+        <div class="account-settings">
+            <div class="form-inline form-group">
+                <div class="col-md-4">
+                    <label for="Name">Имя</label>
+                </div>
+                <div class="col-md-4">
+                    <input id="Name" class="form-control" type="text" ng-model="userModal.user.UserName" ng-blur="userModal.changeUserName()" />
+                </div>
+            </div>
+            <div class="form-inline form-group">
+                <div class="col-md-4">
+                    <label for="Email">Электронная почта</label>
+                </div>
+                <div class="col-md-4">
+                    <input id="Email" class="form-control" type="text" ng-model="userModal.user.Email" ng-disabled="!isEmailChangeClick" />
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default" ng-show="!isEmailChangeClick" ng-click='isEmailChangeClick=true' ng-disabled="isPasswordChangeClick">Изменить адресс</button>
+                </div>
+            </div>
+            <div class="form-inline form-group" ng-show="isEmailChangeClick">
+                <div class="col-md-4">
+                    <label for="Pass">Пароль</label>
+                </div>
+                <div class="col-md-4">
+                    <input id="Pass" class="form-control" type="password" />
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default" ng-click='isEmailChangeClick=false'>Отмена</button>
+                    <button class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>Пароль</label>
+                </div>
+                <div class="col-md-4" ng-show="!isPasswordChangeClick">
+                    <button class="btn btn-default" ng-show="!isPasswordChangeClick" ng-click='isPasswordChangeClick=true' ng-disabled="isEmailChangeClick">Изменить пароль</button>
+                </div>
+                <div class="form-group" ng-show="isPasswordChangeClick">
+                    <div class="col-md-4">
+                        <input id="Pass" class="form-control" type="password" placeholder="Текущий пароль" />
+                        <input id="Pass" class="form-control" type="password" placeholder="Повторите текущий пароль" />
+                        <input id="Pass" class="form-control" type="password" placeholder="Новый пароль" />
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" ng-click='isPasswordChangeClick=false'>Отмена</button>
+                        <button class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger"  ng-click="userModal.cancel()">Cansel</button>
+    <button type="button" class="btn btn-primary" ng-click="userModal.ok()">Save</button>    
+</div>
