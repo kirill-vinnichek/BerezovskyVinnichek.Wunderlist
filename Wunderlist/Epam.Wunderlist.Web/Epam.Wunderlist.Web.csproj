@@ -252,10 +252,10 @@
     <Content Include="Content\wunderlistCss\itemListModal.css" />
     <Content Include="Content\wunderlistCss\userModal.css" />
     <Content Include="Content\wunderlistCss\webapp-media.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\wunderlistCss\webapp.css" />
+    <Content Include="favicon.ico" />
     <Content Include="partials\markedList.html" />
     <Content Include="partials\modals\changeListModal.html" />
     <Content Include="partials\modals\createListModal.html" />
