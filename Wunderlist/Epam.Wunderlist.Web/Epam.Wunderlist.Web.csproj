@@ -229,7 +229,23 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\imgs\av_demo.png" />
     <Content Include="Content\imgs\wl_icon.png" />
+    <Content Include="Content\img\1img.png" />
+    <Content Include="Content\img\2img.png" />
+    <Content Include="Content\img\3img.png" />
+    <Content Include="Content\img\4img.png" />
+    <Content Include="Content\img\5img.png" />
+    <Content Include="Content\img\av_demo.png" />
+    <Content Include="Content\img\bg1.svg" />
+    <Content Include="Content\img\icon_alarm.svg" />
+    <Content Include="Content\img\icon_check.svg" />
+    <Content Include="Content\img\icon_nab.png" />
+    <Content Include="Content\img\icon_people.svg" />
+    <Content Include="Content\img\soc_face.png" />
+    <Content Include="Content\img\soc_gl.png" />
+    <Content Include="Content\img\soc_inst.png" />
+    <Content Include="Content\img\soc_tw.png" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\wunderlistIndexCss\Index.css" />
     <Content Include="Content\wunderlistCss\itemListModal.css" />
     <Content Include="Content\wunderlistCss\userModal.css" />
     <Content Include="Content\wunderlistCss\webapp-media.css" />
@@ -314,12 +330,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\_AccountLayout.cshtml" />
