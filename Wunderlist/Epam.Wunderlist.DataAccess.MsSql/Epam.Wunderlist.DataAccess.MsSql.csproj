@@ -92,7 +92,7 @@
       <Project>{78aca394-2979-46c8-a9f7-52f5346b875e}</Project>
       <Name>Epam.Wunderlist.DataAccess.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wunderlist.Models\Epam.Wunderlist.Models.csproj">
+    <ProjectReference Include="..\Epam.Wunderlist.Models\Epam.Wunderlist.Models.csproj">
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
       <Name>Epam.Wunderlist.Models</Name>
     </ProjectReference>

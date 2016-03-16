@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wunderlist.Models\Epam.Wunderlist.Models.csproj">
+    <ProjectReference Include="..\Epam.Wunderlist.Models\Epam.Wunderlist.Models.csproj">
       <Project>{a7f8de6c-835e-4c4b-b7a1-21f491e95ccf}</Project>
       <Name>Epam.Wunderlist.Models</Name>
     </ProjectReference>
