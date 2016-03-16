@@ -8,8 +8,8 @@
    'ngFileUpload'
 ]);
 
-app.config(['$routeSegmentProvider',
-    function ($routeSegmentProvider) {
+app.config(['$routeSegmentProvider','$routeProvider',
+    function ($routeSegmentProvider, $routeProvider) {
         $routeSegmentProvider.options.autoLoadTemplates = true;
         $routeSegmentProvider.
         when('/filter/:filterName', 'filter').
@@ -39,7 +39,7 @@ app.config(['$routeSegmentProvider',
             dependencies: ['listId', 'taskId']
         });
 
-
+        $routeProvider.otherwise({ redirectTo: 'filter/marked' });
     }]);
 
 

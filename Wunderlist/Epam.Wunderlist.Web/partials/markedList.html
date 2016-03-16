@@ -19,7 +19,7 @@
 <div class="tasks-main" ng-show="!filter.is404">
     <ul>
         <li ng-repeat="taskList in filter.data">
-            <h3 class="heading"><a ng-href="#/lists/{{taskList.Id}}" ng-bind="taskList.Name"></a></h3>
+            <h3 class="heading"><a ng-href="#/lists/{{taskList.Id}}">{{taskList.Name}} - {{taskList.ItemsCount}}</a></h3>
             <div class="task-list">
                 <ul>
                     <li ng-repeat="task in taskList.TaskList">
