@@ -9,7 +9,8 @@ namespace Epam.Wunderlist.Web.Controllers
             return View();
         }     
 
-        public ActionResult Main()
+        [Authorize]
+        public ActionResult WebApp()
         {
             return View();
         }

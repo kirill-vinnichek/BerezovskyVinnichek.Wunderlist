@@ -5,12 +5,12 @@ namespace Epam.Wunderlist.Services.Interfaces
 {
     public interface IUserService
     {
-        void Add(User entity);
+        void Create(User entity);
         void Update(User entity);
         void Delete(User entity);
         void Delete(int id);
         User GetById(int id);
         IEnumerable<User> GetAll();
-        User GetByEmail(string email);
+        User GetByEmail(string email);     
     }
 }

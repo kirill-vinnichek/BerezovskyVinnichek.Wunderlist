@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Epam.Wunderlist.Models;
 using Epam.Wunderlist.Web.Models;
+using Epam.Wunderlist.Web.ViewModels;
 
 namespace Epam.Wunderlist.Web.Mapping
 {
@@ -10,6 +11,9 @@ namespace Epam.Wunderlist.Web.Mapping
         {
             Mapper.CreateMap<User, OwinUser>();
             Mapper.CreateMap<Role, OwinRole>();
+            Mapper.CreateMap<User, UserInfo>();
+            Mapper.CreateMap<ToDoItemList, ToDoItemListViewModel>();
+            Mapper.CreateMap<ToDoItem, ToDoItemViewModel>();
         }
     }
 }

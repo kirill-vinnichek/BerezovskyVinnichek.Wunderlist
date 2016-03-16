@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="webApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wunderlist</title>
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/webapp")
+    @Scripts.Render("~/script/modernizr")
+</head>
+<body>
+    <div class="wrapper background" ng-controller="mainCtrl as main">
+        <div id="sidebar">
+            <div class="sidebar-inner">
+                <div id="search-toolbar">
+                    <a class="toggle-menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+                    <input class="search-input" />
+                    <a class="cancel-search"><span class="glyphicon glyphicon-remove hidden" aria-hidden="true"></span></a>
+                    <a class="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                </div>
+                <div id="user-toolbar">
+                    <div class="user-dropdown" uib-dropdown>
+                        <a class="user" uib-dropdown-toggle aria-haspopup="true" aria-expanded="true">
+                            <span class="user-avatar"><img ng-src="{{user.UserPhotoUrl}}" /></span>
+                            <span class="user-name" ng-bind="user.UserName"></span>
+                            <span class="user-arrow glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul uib-dropdown-menu aria-labelledby="dropdownMenu1">
+                            <li class="dropdown-header">User menu</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ng-click="main.openUserModal()">User profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header" ng-bind="user.Email"></li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-actions">
+                        <a><span class="glyphicon glyphicon-bell"></span></a>
+                        <a><span class="glyphicon glyphicon-phone-alt"></span></a>
+                    </div>
+                </div>
+                <div id="lists">
+                    <ul class="filter-collection">
+                        <li class="lists-item" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('listsF' | routeSegmentEqualsTo) && ('listName' | routeSegmentParam) == 'marked'}">
+                            <a ng-href="#/lists/marked" ng-dblclick="main.openChangeListModal(taskList)">
+                                <span class="glyphicon glyphicon-ice-lolly-tasted list-icon" style="color:blue"></span>
+                                <span class="title">Отмеченные</span>
+                                <span class="count" ng-bind="taskList.Count"></span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="list-collection">
+                        <li class="lists-item" ng-repeat="taskList in user.taskLists" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
+                            <a ng-href="#/lists/{{taskList.Id}}" ng-dblclick="main.openChangeListModal(taskList)">
+                                <span class="glyphicon glyphicon-th-list list-icon"></span>
+                                <span class="title" ng-bind="taskList.Name"></span>
+                                <span class="count" ng-bind="taskList.Count"></span>
+                                <span class="glyphicon glyphicon-trash list-options" ng-click="main.deleteTaskList(taskList.Id)"></span>
+                                <span class="glyphicon glyphicon-pencil list-options" ng-click="main.openChangeListModal(taskList)"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-actions">
+                    <a class="add-list" ng-click="main.openCreateListModal()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>Создать список</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="tasks">
+
+            <div app-view-segment="0"></div>
+        </div>
+        <div app-view-segment="1"></div>
+    </div>
+
+
+
+
+
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+
+
+    @Scripts.Render("~/script/jquery")
+    @Scripts.Render("~/script/jqueryval")
+    @Scripts.Render("~/script/jslibs")
+    @Scripts.Render("~/script/respond")
+    @Scripts.Render("~/script/angular")
+    @Scripts.Render("~/script/webapp")
+    <script>
+        $(document).ready(function () {
+            var $window = $(window),
+                $sidebar = $('#sidebar');
+
+            $(".toggle-menu").on("click", function (e) {
+                $sidebar.toggleClass("collapsed");
+                e.preventDefault;
+            });
+            function resize() {
+                var width = $window.width();
+                if (width < 768) {
+                    $sidebar.addClass("collapsed");
+                }
+                else
+                    $sidebar.removeClass("collapsed");
+            }
+            $window.load(resize);
+            $window.resize(resize);
+
+        })
+
+    </script>
+</body>
+</html>

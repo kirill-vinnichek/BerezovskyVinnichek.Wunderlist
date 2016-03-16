@@ -5,6 +5,8 @@ using Epam.Wunderlist.DependencyResolver.Modules;
 using Epam.Wunderlist.Web.Models;
 using Microsoft.AspNet.Identity;
 using Epam.Wunderlist.Web.Infrastructure;
+using Autofac.Integration.WebApi;
+using System.Web.Http;
 
 namespace Epam.Wunderlist.Web
 {
@@ -14,6 +16,7 @@ namespace Epam.Wunderlist.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterFilterProvider();
             builder.RegisterModule(new AutofacDataModule());
             builder.RegisterModule(new AutofacServiceModule());
@@ -25,6 +28,7 @@ namespace Epam.Wunderlist.Web
             IContainer container = builder.Build();
 
             System.Web.Mvc.DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }

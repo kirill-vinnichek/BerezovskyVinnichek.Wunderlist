@@ -46,7 +46,6 @@
     <Compile Include="ToDoItemList.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Picture.cs" />
-    <Compile Include="UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="ToDoItem.cs" />

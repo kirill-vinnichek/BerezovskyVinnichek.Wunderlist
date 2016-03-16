@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Epam.Wunderlist.DataAccess.Interfaces;
 using Epam.Wunderlist.DataAccess.Interfaces.Infrastructure;
 using Epam.Wunderlist.Models;
 using Epam.Wunderlist.Services.Interfaces;
+using System.Linq;
 
 namespace Epam.Wunderlist.Services.Services
 {
@@ -13,8 +15,8 @@ namespace Epam.Wunderlist.Services.Services
 
         public ToDoItemService(IToDoItemRepository rep, IUnitOfWork uow)
         {
-            this._repository = rep;
-            this._unitOfWork = uow;
+            _repository = rep;
+            _unitOfWork = uow;
         }
 
         public void Add(ToDoItem entity)
@@ -23,37 +25,44 @@ namespace Epam.Wunderlist.Services.Services
             _unitOfWork.Commit();
         }
 
-        public void ChangeStatus(int id, ToDoItemStatus status)
+        public void ChangeStatus(int userId, int id, ToDoItemStatus state)
         {
-            var task = GetById(id);
-            task.CurrentState = status;
-            Update(task);
+            //TODO: Выкидывать Exception т.к. не свою обновляешь
+            var task = _repository.GetById(id);
+            if (task?.UserId == userId)
+            {
+                task.CurrentState = state;
+                Update(task);
+            }
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(t=>t.Id==id);
+            _repository.Delete(t => t.Id == id);
             _unitOfWork.Commit();
         }
 
         public void Delete(ToDoItem entity)
         {
-            var toDoItem = GetById(entity.Id);
-            _repository.Delete(toDoItem);
-            _unitOfWork.Commit();
+            Delete(entity.Id);
         }
 
-        public IEnumerable<ToDoItem> GetAll(int id)
+        public IEnumerable<ToDoItem> GetAll(int userId, int taskListid)
         {
-            return _repository.GetMany(t => t.ToDoItemListId == id);
+            return _repository.GetMany(t => t.ToDoItemListId == taskListid).Where(t => t.UserId == userId);
         }
 
-        public ToDoItem GetById(int id)
+        public ToDoItem GetById(int userId, int id)
         {
-            return _repository.GetById(id);
+            var task = _repository.GetById(id);
+            return task?.UserId == userId ? task : null;
         }
 
 
+        public IEnumerable<ToDoItem> GetInStatus(int userId, int taskListid, ToDoItemStatus state)
+        {
+            return _repository.GetMany(t => t.ToDoItemListId == taskListid && t.CurrentState == state).Where(t => t.UserId == userId);
+        }
 
         public void Update(ToDoItem entity)
         {

@@ -1,0 +1,55 @@
+﻿.user-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .user-modal .modal-content {
+        width: 700px;
+    }
+
+    .user-modal .modal-body {
+        display: flex;
+        padding: 0px;
+    }
+
+    .user-modal .user-tabs {
+        background: #fff;
+        border-right: 1px solid #ebebeb;
+        -webkit-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+        position: relative;
+        overflow: auto;
+    }
+
+       
+
+
+    .user-modal .account {
+        flex: 1;
+        overflow: auto;
+    }
+
+        .user-modal .account .account-header {
+            display: flex;
+        }
+
+.account-header .avatar {
+    margin: 10px 10px 0px 10px;
+}
+
+    .account-header .avatar > img {
+        width: 120px;
+        height: 120px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+.user-modal .account .account-settings {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal {
+display: block;
+}

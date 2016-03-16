@@ -2,8 +2,7 @@
 {
     public enum ToDoItemStatus
     {
-        New,
-        Unfinished,
+        Unfinished = 1,
         Сompleted
     }
 }

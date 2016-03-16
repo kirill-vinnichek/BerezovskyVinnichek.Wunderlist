@@ -7,8 +7,9 @@ namespace Epam.Wunderlist.Web.Infrastructure
     {
         public WunderlistUserManager(IUserStore<OwinUser, int> store) : base(store)
         {
-            UserValidator = new UserValidator<OwinUser,int>(this)
+            UserValidator = new UserValidator<OwinUser, int>(this)
             {
+                AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
         }
