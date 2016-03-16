@@ -161,8 +161,8 @@ input {
     overflow-y: auto;
 }
 
-    #lists .filter-collection .list-icon{
-        font-size:24px;
+    #lists .filter-collection .list-icon {
+        font-size: 24px;
     }
 
 .lists-item.active {
@@ -273,6 +273,32 @@ input {
     border-radius: 3px;
 }
 
+    .tasks-main .heading {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        word-break: break-word;
+        font-size: 11px;
+        color: #fff;
+        position: relative;
+    }
+
+        .tasks-main .heading a {
+            background: rgba(102,137,100,0.75);
+            color: #fff;
+            padding: 3px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            line-height: 16px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
 .add-task {
     background: rgba(102,137,100,0.75);
     overflow: hidden;
@@ -320,7 +346,9 @@ input {
         height: 46px;
     }
 
+    .task-item.done{
 
+    }
 
     .task-list .task-checkbox span {
         color: grey;
@@ -347,15 +375,15 @@ input {
         text-overflow: ellipsis;
     }
 
-    .task-list.done {
+    .task-item.done {
         opacity: .6;
     }
 
-        .task-list.done .task-title {
+        .task-item.done .task-title {
             text-decoration: line-through;
         }
 
-        .task-list.done .task-dateCompleted {
+        .task-item.done .task-dateCompleted {
         }
 
 .task-delete span {
@@ -509,4 +537,8 @@ input {
 
 .detail-close span:hover {
     color: forestgreen;
+}
+
+.details-detele span:hover {
+    color: firebrick;
 }

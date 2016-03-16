@@ -8,13 +8,32 @@
    'ngFileUpload'
 ]);
 
-app.config(['$routeSegmentProvider',
-    function ($routeSegmentProvider) {
+app.config(['$routeSegmentProvider', '$routeProvider',
+    function ($routeSegmentProvider, $routeProvider) {
         $routeSegmentProvider.options.autoLoadTemplates = true;
         $routeSegmentProvider.
+        when('/search/:searchString', 'search').
+        when('/filter/:filterName', 'filter').
         when('/lists/:listId', 'lists').
-        when('/lists/:listId/tasks/:taskId', 'lists.taskDetails').
+        when('/lists/:listId/tasks/:taskId', 'lists.taskDetails');
 
+        $routeSegmentProvider.
+            segment('filter', {
+                templateUrl: "partials/markedList.html",
+                controller: "taskListFilterCtrl",
+                controllerAs: "ctrl",
+                dependencies: ['filterName']
+            });;
+
+        $routeSegmentProvider.
+           segment('search', {
+               templateUrl: "partials/markedList.html",
+               controller: "searchCtrl",
+               controllerAs: "ctrl",
+               dependencies: ['searchString']
+           });;
+
+        $routeSegmentProvider.
         segment('lists', {
             templateUrl: "partials/list.html",
             controller: "taskListCtrl",
@@ -28,6 +47,8 @@ app.config(['$routeSegmentProvider',
             controllerAs: "task",
             dependencies: ['listId', 'taskId']
         });
+
+        $routeProvider.otherwise({ redirectTo: 'filter/marked' });
     }]);
 
 

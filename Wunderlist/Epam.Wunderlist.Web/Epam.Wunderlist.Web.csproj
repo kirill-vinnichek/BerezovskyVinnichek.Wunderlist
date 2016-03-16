@@ -200,7 +200,9 @@
     <Compile Include="Controllers\WebApi\ImageController.cs" />
     <Compile Include="Controllers\WebApi\ItemController.cs" />
     <Compile Include="Controllers\WebApi\ItemListController.cs" />
+    <Compile Include="Controllers\WebApi\MarkedFilterController.cs" />
     <Compile Include="Controllers\WebApi\OrderController.cs" />
+    <Compile Include="Controllers\WebApi\SearchController.cs" />
     <Compile Include="Controllers\WebApi\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +218,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\FilteredToDoItemList.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ToDoItemListViewModel.cs" />
     <Compile Include="ViewModels\ToDoItemViewModel.cs" />
@@ -237,6 +240,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\wunderlistCss\webapp.css" />
+    <Content Include="partials\markedList.html" />
     <Content Include="partials\modals\changeListModal.html" />
     <Content Include="partials\modals\createListModal.html" />
     <Content Include="partials\taskDetails.html" />
@@ -277,10 +281,12 @@
     <Content Include="Scripts\app\controllers\searchController.js" />
     <Content Include="Scripts\app\controllers\taskController.js" />
     <Content Include="partials\list.html" />
+    <Content Include="Scripts\app\controllers\taskListFilterController.js" />
     <Content Include="Scripts\app\controllers\userController.js" />
     <Content Include="Scripts\app\derectives\rigthClickDerective.js" />
     <Content Include="Scripts\app\derectives\wlDateDerective.js" />
     <Content Include="Scripts\app\derectives\wlEnterDerective.js" />
+    <Content Include="Scripts\app\services\filterService.js" />
     <Content Include="Scripts\app\services\taskListService.js" />
     <Content Include="Scripts\app\services\taskService.js" />
     <Content Include="Scripts\app\services\uploadService.js" />
@@ -314,12 +320,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\_AccountLayout.cshtml" />

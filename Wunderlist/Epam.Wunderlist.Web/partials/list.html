@@ -48,16 +48,15 @@
             Показать завершенные задачи
         </a>
     </h4>
-    <div class="task-list done" ng-show="showCompleted">
+    <div class="task-list " ng-show="showCompleted">
         <ul>
             <li ng-repeat="task in taskList.list.completedTasks" ng-drop="true" ng-drag="true" ng-drag-data="task" ng-drag-success="taskList.onDragComplete($data,$event)" ng-drop-success="taskList.onCompletedDropComplete($index, $data,$event)" ng-center-anchor="true" ng-class="{active: ('lists.taskDetails' | routeSegmentEqualsTo) && ('taskId' | routeSegmentParam) == {{task.Id}}}">
-                <div class="task-item" ng-dblclick="taskList.showDetails(task.Id)">
+                <div class="task-item done" ng-dblclick="taskList.showDetails(task.Id)">
                     <a class="task-checkbox" ng-click="taskList.completeTask(false,task)">
                         <span class="glyphicon glyphicon-check"></span>
                     </a>
                     <span class="task-title" ng-bind="task.Name"></span>
                     <span class="task-dateCompleted" wl-date="task.DateCompleted" locale="ru"></span>
-                    <span class="task-date" ng-bind="task.Date"></span>
                     <a class="task-delete" ng-click="taskList.deleteTask(task)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>

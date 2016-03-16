@@ -15,6 +15,7 @@ namespace Epam.Wunderlist.Web.Mapping
             Mapper.CreateMap<UserInfo, User>();
             Mapper.CreateMap<ToDoItemListViewModel, ToDoItemList>();
             Mapper.CreateMap<ToDoItemViewModel, ToDoItem>();
+            Mapper.CreateMap<FilteredToDoItemList,ToDoItemList>();
         }
     }
 }

@@ -19,9 +19,9 @@
             <div class="sidebar-inner">
                 <div id="search-toolbar">
                     <a class="toggle-menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
-                    <input class="search-input" />
-                    <a class="cancel-search"><span class="glyphicon glyphicon-remove hidden" aria-hidden="true"></span></a>
-                    <a class="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <input class="search-input" ng-model="main.searchString" wl-enter="main.showSearch(main.searchString)" />
+                    <a class="cancel-search" ng-click="main.canselSearch()" ng-class="{hidden: !('search' | routeSegmentEqualsTo)}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a class="search" ng-click="main.showSearch(main.searchString)" ng-class="{hidden: ('search' | routeSegmentEqualsTo)}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                 </div>
                 <div id="user-toolbar">
                     <div class="user-dropdown" uib-dropdown>
@@ -46,8 +46,8 @@
                 </div>
                 <div id="lists">
                     <ul class="filter-collection">
-                        <li class="lists-item" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('listsF' | routeSegmentEqualsTo) && ('listName' | routeSegmentParam) == 'marked'}">
-                            <a ng-href="#/lists/marked" ng-dblclick="main.openChangeListModal(taskList)">
+                        <li class="lists-item" ng-class="{active: ('filter' | routeSegmentEqualsTo) && ('filterName' | routeSegmentParam) == 'marked'}">
+                            <a ng-href="#/filter/marked">
                                 <span class="glyphicon glyphicon-ice-lolly-tasted list-icon" style="color:blue"></span>
                                 <span class="title">Отмеченные</span>
                                 <span class="count" ng-bind="taskList.Count"></span>
@@ -56,7 +56,7 @@
 
                     </ul>
                     <ul class="list-collection">
-                        <li class="lists-item" ng-repeat="taskList in user.taskLists" ng-drop="true" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
+                        <li class="lists-item" ng-repeat="taskList in user.taskLists" ng-drop="!(('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}})" ng-drop-success="main.onDropComplete($index, $data,$event)" ng-class="{active: ('lists' | routeSegmentEqualsTo) && ('listId' | routeSegmentParam) == {{taskList.Id}}}">
                             <a ng-href="#/lists/{{taskList.Id}}" ng-dblclick="main.openChangeListModal(taskList)">
                                 <span class="glyphicon glyphicon-th-list list-icon"></span>
                                 <span class="title" ng-bind="taskList.Name"></span>
@@ -77,7 +77,6 @@
             </div>
         </div>
         <div class="tasks">
-
             <div app-view-segment="0"></div>
         </div>
         <div app-view-segment="1"></div>

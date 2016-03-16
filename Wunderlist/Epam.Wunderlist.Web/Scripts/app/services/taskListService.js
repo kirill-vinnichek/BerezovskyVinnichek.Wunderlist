@@ -38,7 +38,6 @@ app.service("taskListService", ["$http", "$q", function ($http, $q) {
 
     this.updateTasksOrder = function (order) {
         return $http.put('api/order', order);
-    };
-
+    };   
 
 }]);
