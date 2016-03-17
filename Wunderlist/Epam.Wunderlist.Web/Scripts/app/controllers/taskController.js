@@ -1,7 +1,7 @@
 ﻿var app = angular.module('webApp');
 
 app.controller("taskCtrl", ['$scope', '$location', '$routeSegment', 'taskService', function ($scope, $location, $routeSegment, taskService) {
-    self = this;
+    var self = this;
     var taskId = $routeSegment.$routeParams.taskId;
     var listId = $routeSegment.$routeParams.listId;
     self.is404 = false;

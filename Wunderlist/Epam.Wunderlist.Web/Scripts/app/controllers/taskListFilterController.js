@@ -2,7 +2,7 @@
 
 app.controller("taskListFilterCtrl", ['$scope', '$routeSegment', '$location', 'filterService', 'taskService', function ($scope, $routeSegment, $location, filterService, taskService) {
 
-    self = this;
+    var self = this;
     self.is404 = false;
     self.Name = "Отмеченные";
 

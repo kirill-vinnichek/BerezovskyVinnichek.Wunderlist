@@ -2,7 +2,7 @@
 
 app.controller("taskListChangeModalCtrl", ['$scope', 'taskListService', '$uibModalInstance','toDoList', function ($scope, taskListService, $uibModalInstance, toDoList) {
 
-    self = this;
+    var self = this;
 
     self.taskList = { }
     angular.copy(toDoList, self.taskList);

@@ -2,7 +2,7 @@
 
 app.controller("taskListCreateModalCtrl", ['$scope', 'taskListService', '$uibModalInstance', function ($scope, taskListService, $uibModalInstance) {
 
-    self = this;
+    var self = this;
 
     self.taskList = {
         Name: "",

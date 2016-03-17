@@ -3,9 +3,10 @@
 app.controller("taskListCtrl", ['$scope', '$routeSegment', '$location', 'taskListService', 'taskService', function ($scope, $routeSegment, $location, taskListService, taskService) {
 
     $scope.showCompleted = false;
-    self = this;
+    var self = this;
 
     var listId = $routeSegment.$routeParams.listId;
+    var audio = document.getElementById('player');
     self.is404 = false;
 
     var deleteFromList = function (task) {
@@ -21,6 +22,12 @@ app.controller("taskListCtrl", ['$scope', '$routeSegment', '$location', 'taskLis
         order.Unfinished = _.map(self.list.unfinishedTasks, 'Id');
         taskListService.updateTasksOrder(order);
     };
+
+    var playAudio = function () {
+        audio.currentTime -= audio.currentTime;
+        audio.play();
+    };
+
 
     taskListService.getTaskList(listId).success(function (data) {
         self.list = data;
@@ -45,6 +52,7 @@ app.controller("taskListCtrl", ['$scope', '$routeSegment', '$location', 'taskLis
         taskService.completeTask(true, data).success(function (task) {
             deleteFromList(data);
             self.list.completedTasks.splice(index, 0, task);
+            playAudio();
             updateOrder();
         });
     }
@@ -91,6 +99,7 @@ app.controller("taskListCtrl", ['$scope', '$routeSegment', '$location', 'taskLis
             else {
                 _.remove(self.list.unfinishedTasks, function (el) { return el.Id === task.Id });
                 self.list.completedTasks.push(task);
+                playAudio();
             }
         });
     }

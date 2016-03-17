@@ -1,7 +1,7 @@
 ﻿var app = angular.module('webApp');
 
 app.controller("searchCtrl", ['$scope', '$routeSegment', '$location', 'filterService', 'taskService', function ($scope, $routeSegment, $location, filterService, taskService) {
-    self = this;
+    var self = this;
     self.is404 = false;
     self.Name = $routeSegment.$routeParams.searchString;
 

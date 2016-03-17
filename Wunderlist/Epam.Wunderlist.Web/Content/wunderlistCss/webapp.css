@@ -302,6 +302,8 @@ input {
 .add-task {
     background: rgba(102,137,100,0.75);
     overflow: hidden;
+    display:flex;
+    align-items:center;
 }
 
     .add-task a span {
@@ -312,6 +314,7 @@ input {
     height: 45px;
     font-size: 18px;
     color: white;
+    flex:1;
 }
 
 .task-list {
