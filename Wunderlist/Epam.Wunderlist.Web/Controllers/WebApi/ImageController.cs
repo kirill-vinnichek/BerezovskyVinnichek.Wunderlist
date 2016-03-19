@@ -9,10 +9,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
-    [Authorize]
+    [HandleError()]
+    [System.Web.Http.Authorize]
     public class ImageController : ApiController
     {
         private IImageService _imageService;
@@ -29,7 +31,7 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             return _imageService.GetImage(id).Url;
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public IHttpActionResult Add()
         {
             //TODO: Проверка на ImageType и удалять старую

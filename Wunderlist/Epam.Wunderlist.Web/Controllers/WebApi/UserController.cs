@@ -9,10 +9,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
-    [Authorize]
+    [HandleError()]
+    [System.Web.Http.Authorize]
     public class UserController : ApiController
     {
         private IUserService _userService;
@@ -24,7 +26,7 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             _imageService = imageService;
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         // GET api/<controller>
         public IHttpActionResult Get()
         {
@@ -43,7 +45,7 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             return "value";
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         // POST api/<controller>
         public IHttpActionResult Post([FromBody] UserInfo user)
         {

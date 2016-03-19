@@ -13,9 +13,9 @@ namespace Epam.Wunderlist.Web.Controllers
 {
     //TODO: Избавится от EF в Web проекте. Спросить как?
     [Authorize]
+    [HandleError()]
     public class AccountController : Controller
-    {
-
+    {       
         private readonly IImageService _imageService;
         private readonly IToDoItemListService _itemListService;
         private readonly IUserService _userService;

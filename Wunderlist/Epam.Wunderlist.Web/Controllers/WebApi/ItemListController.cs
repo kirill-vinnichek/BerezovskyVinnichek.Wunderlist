@@ -9,11 +9,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Web.Mvc;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
+    [HandleError()]
     public class ItemListController : ApiController
     {
 
@@ -23,13 +24,13 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             _itemlistService = itemlistService;
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public IHttpActionResult GetItemlists()
         {
             return Ok(_itemlistService.GetAll(User.Identity.GetUserId<int>()));
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public IHttpActionResult GetItemlist(int id)
         {
             var userId = User.Identity.GetUserId<int>();
@@ -39,7 +40,7 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             return Ok(Mapper.Map<ToDoItemListViewModel>(itemList));
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public IHttpActionResult CreateItemList([FromBody] ToDoItemListViewModel itemList)
         {
             try
@@ -55,7 +56,7 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             }
         }
 
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public IHttpActionResult UpdateItemList([FromBody] ToDoItemListViewModel itemList)
         {
             try
@@ -71,8 +72,8 @@ namespace Epam.Wunderlist.Web.Controllers.WebApi
             }
         }
 
-        [HttpDelete]
-        [AcceptVerbs("DELETE")]
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.AcceptVerbs("DELETE")]
         public IHttpActionResult DeleteItemList(int id)
         {
             try

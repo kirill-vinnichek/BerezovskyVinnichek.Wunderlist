@@ -8,9 +8,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
+    [HandleError()]
     public class SearchController : ApiController
     {
         private readonly IToDoItemListService _taskListService;

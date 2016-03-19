@@ -7,10 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Epam.Wunderlist.Web.Controllers.WebApi
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
+    [HandleError()]
     public class OrderController : ApiController
     {
         private readonly IToDoItemService _taskService;
